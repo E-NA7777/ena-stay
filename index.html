@@ -313,13 +313,14 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
   <a href="#" class="logo"><span class="logo-text" style="color:#1a1a1a;">E-<em>NA</em></span></a>
   <div class="nav-center">
     <ul class="nmenu">
-      <li><a href="#" class="jai">TOP</a><a href="#" class="eni" style="display:none;">TOP</a></li>
-      <li><a href="#props" class="jai">ゲストハウス</a><a href="#props" class="eni" style="display:none;">STAY</a></li>
-      <li><a href="#reserve" class="jai">宿泊予約</a><a href="#reserve" class="eni" style="display:none;">RESERVE</a></li>
-      <li><a href="#access" class="jai">アクセス</a><a href="#access" class="eni" style="display:none;">ACCESS</a></li>
-      <li><a href="#concept" class="jai">想い</a><a href="#concept" class="eni" style="display:none;">STORY</a></li>
-      <li><a href="#contact" class="jai">お問合せ</a><a href="#contact" class="eni" style="display:none;">CONTACT</a></li>
+      <li><a href="#" class="jai">TOP</a></li>
+      <li><a href="#props" class="jai">ゲストハウス</a></li>
+      <li><a href="#reserve" class="jai">宿泊予約</a></li>
+      <li><a href="#access" class="jai">アクセス</a></li>
+      <li><a href="#concept" class="jai">想い</a></li>
+      <li><a href="#contact" class="jai">お問合せ</a></li>
     </ul>
+
   </div>
   <div class="lang-btns" style="display:flex;align-items:center;gap:.3rem;">
     <button class="lbtn on" onclick="setL('ja')">日本語</button>
@@ -688,7 +689,7 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
   </div>
 </section>
 
-<section style="padding:4rem 0;background:var(--cream);background-image:url('images/reserve_bg.png');background-size:cover;background-position:center;background-blend-mode:overlay;position:relative;" id="reserve">
+<section style="padding:4rem 0;background:var(--cream);background-image:url('images/reserve_bg.jpg');background-size:cover;background-position:center;background-blend-mode:overlay;position:relative;" id="reserve">
   <div style="max-width:1000px;margin:0 auto;padding:0 5rem;">
     <div style="text-align:center;margin-bottom:3rem;" class="reveal">
       <p style="font-family:'Tenor Sans',sans-serif;font-size:.63rem;letter-spacing:.4em;color:var(--sage);text-transform:uppercase;margin-bottom:.8rem;">— ご予約 —</p>
@@ -978,7 +979,7 @@ function submitReservation(e) {
 
   // メールソフトを開く（ページ遷移しない方法）
   const a = document.createElement('a');
-  a.href = 'mailto:kakuruko4@gmail.com?subject=' + subject + '&body=' + body;
+  a.href = 'mailto:ena.minpaku2025@gmail.com?subject=' + subject + '&body=' + body;
   a.style.display = 'none';
   document.body.appendChild(a);
   a.click();
