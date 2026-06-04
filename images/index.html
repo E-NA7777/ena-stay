@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-NA | Osaka Private Stay | 大阪 貸切民泊</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Tenor+Sans&family=Noto+Sans+JP:wght@200;300;400&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+/* ========== NEW PALETTE（写真と調和） ========== */
+:root{
+  --linen:   #f8f5f0;    /* 明るいナチュラルホワイト */
+  --cream:   #f0ebe2;    /* ナチュラルクリーム */
+  --sand:    #e0d8cc;    /* ライトサンド */
+  --stone:   #b0a898;    /* ストーン */
+  --sage:    #6b7c5e;    /* ナチュラルグリーン */
+  --teal:    #5c7060;    /* フォレストグリーン */
+  --taupe:   #9c8c7e;    /* トープ */
+  --charcoal:#3a3530;    /* ソフトチャコール */
+  --deep:    #2a2520;    /* ディープ */
+  --mist:    #ece8e0;    /* ミスト */
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:#f8f5f0;color:var(--charcoal);font-family:'Noto Sans JP',sans-serif;font-weight:300;overflow-x:hidden;cursor:pointer;font-size:16px;}
+
+.grain{position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");background-size:300px;}
+.cursor{width:8px;height:8px;background:var(--sage);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
+.cursor-f{width:30px;height:30px;border:1px solid var(--teal);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,opacity .3s,border-color .3s;opacity:.55;}
+
+/* LANG */
+.nav-center{display:flex;flex-direction:column;align-items:center;gap:2px;}
+.nav-center .nmenu:first-child a{font-size:.82rem;font-weight:500;}
+.nav-center .nmenu:last-child a{font-size:.6rem;letter-spacing:.1em;color:var(--stone);}
+.lang-btns{display:flex;gap:.3rem;align-items:center;}
+.lang-bar{display:flex;align-items:center;gap:.3rem;}
+.lbtn{background:none;border:1px solid var(--stone);border-radius:4px;font-family:'Noto Sans JP',sans-serif;font-size:.68rem;letter-spacing:.05em;color:var(--charcoal);cursor:pointer;padding:.3rem .65rem;transition:all .3s;font-weight:400;}
+.lbtn.on{color:var(--charcoal);border-color:var(--sage);background:rgba(107,124,94,.08);}
+.lbtn:hover{color:var(--charcoal);}
+.lsep{color:var(--sand);font-size:.6rem;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:400;display:flex;justify-content:space-between;align-items:center;padding:0 3rem;height:64px;background:rgba(248,245,240,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--sand);transition:background .3s;}
+nav.sc{background:rgba(248,245,240,.98);}
+.logo{font-family:'DM Serif Display',serif;font-size:1.6rem;letter-spacing:.06em;color:#ffffff;text-decoration:none;display:flex;align-items:center;gap:.5rem;white-space:nowrap;}
+.logo-text{display:inline;}
+.logo-sub{font-family:'Tenor Sans',sans-serif;font-size:.38rem;letter-spacing:.3em;color:var(--stone);vertical-align:middle;display:inline;}
+.logo em{color:var(--teal);font-style:italic;}
+.logo sub{font-family:'Tenor Sans',sans-serif;font-size:.42rem;letter-spacing:.35em;color:var(--stone);vertical-align:middle;margin-left:.6rem;text-transform:uppercase;}
+.nmenu{display:flex;gap:1.5rem;list-style:none;}
+.nmenu a{display:flex;flex-direction:column;align-items:center;gap:.2rem;font-family:'Noto Sans JP',sans-serif;font-size:.55rem;letter-spacing:.03em;color:var(--charcoal);text-decoration:none;transition:color .3s;cursor:pointer;font-weight:400;min-width:52px;}
+.nmenu a:hover{color:var(--sage);}
+.nav-icon{display:flex;align-items:center;justify-content:center;color:var(--charcoal);transition:color .3s;}
+.nmenu a:hover .nav-icon{color:var(--sage);}
+.nav-label{font-size:.52rem;letter-spacing:.02em;text-align:center;line-height:1.2;}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hl{display:flex;flex-direction:column;justify-content:flex-end;padding:2rem 4rem 5rem 5rem;position:relative;overflow:hidden;}
+.hl-photo{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;filter:brightness(0.75);}
+.hl-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,26,24,.72) 0%,rgba(28,26,24,.2) 60%,rgba(28,26,24,.05) 100%);z-index:1;}
+.hl>*:not(.hl-photo):not(.hl-overlay){position:relative;z-index:2;}
+.hkbg{position:absolute;right:-.05em;top:50%;transform:translateY(-50%);font-family:'Shippori Mincho',serif;font-size:32vh;font-weight:400;color:rgba(255,255,255,.035);writing-mode:vertical-rl;line-height:1;pointer-events:none;user-select:none;z-index:2;}
+.htag{font-family:'Tenor Sans',sans-serif;font-size:.63rem;letter-spacing:.45em;color:var(--sage);text-transform:uppercase;margin-bottom:2.5rem;opacity:0;animation:fu 1s .3s ease forwards;}
+.hh1{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,4vw,4rem);line-height:1;white-space:nowrap;color:rgba(245,242,236,.92);opacity:0;animation:fu 1.1s .5s cubic-bezier(.16,1,.3,1) forwards;}
+.hh1 em{color:var(--teal);font-style:italic;display:block;}
+.hrule{width:48px;height:1px;background:var(--sage);margin:2.5rem 0;opacity:0;animation:fu 1s .7s ease forwards;}
+.hdesc{opacity:0;animation:fu 1s .9s ease forwards;}
+.hdesc p{font-family:'Shippori Mincho',serif;font-size:1rem;line-height:2;color:rgba(245,242,236,.65);margin-bottom:.3rem;}
+.hdesc small{font-family:'DM Serif Display',serif;font-style:italic;font-size:.85rem;color:rgba(245,242,236,.35);}
+.hcta{margin-top:3.5rem;display:flex;gap:1.2rem;flex-wrap:wrap;opacity:0;animation:fu 1s 1.1s ease forwards;}
+.bg{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.9rem 2rem;min-width:160px;border:1px solid rgba(122,140,117,.5);font-family:'Tenor Sans',sans-serif;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--linen);text-decoration:none;cursor:pointer;transition:all .4s;position:relative;overflow:hidden;}
+.bg::before{content:'';position:absolute;inset:0;background:var(--sage);transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.bg:hover::before{transform:scaleX(1);}
+.bg:hover{color:var(--linen);border-color:var(--sage);}
+.bg span,.bg .arr{position:relative;z-index:1;}
+.bg .arr{transition:transform .3s;}
+.bg:hover .arr{transform:translateX(4px);}
+.bf{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.9rem 2rem;min-width:160px;background:var(--teal);font-family:'Tenor Sans',sans-serif;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--linen);text-decoration:none;cursor:pointer;transition:background .3s;}
+.bf:hover{background:var(--sage);}
+.hr2{position:relative;background:var(--deep);overflow:hidden;}
+.hr2-in{position:absolute;inset:0;display:flex;flex-direction:column;}
+.img-top{flex:1.4;overflow:hidden;}
+.img-top img{width:100%;height:100%;object-fit:cover;}
+.img-bot{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3px;background:#111;}
+.ithumb{overflow:hidden;}
+.ithumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.ithumb:hover img{transform:scale(1.06);}
+.hbadge{position:absolute;bottom:3rem;left:-1.5rem;background:var(--linen);padding:1.5rem 2rem;box-shadow:0 20px 60px rgba(0,0,0,.12);z-index:20;opacity:0;animation:fu 1s 1.3s ease forwards;}
+.bstar{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--sage);line-height:1;}
+.blabel{font-family:'Tenor Sans',sans-serif;font-size:.6rem;letter-spacing:.25em;color:var(--stone);text-transform:uppercase;margin-top:.35rem;}
+.bsub{font-family:'Shippori Mincho',serif;font-size:.8rem;color:var(--teal);margin-top:.2rem;}
+.vtext{position:absolute;right:1.8rem;top:50%;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.35em;color:var(--stone);text-transform:uppercase;z-index:20;}
+@keyframes fu{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* STRIP */
+.strip{background:var(--charcoal);display:grid;grid-template-columns:repeat(4,1fr);}
+.si{padding:3rem 2rem;border-right:1px solid rgba(255,255,255,.06);text-align:center;}
+.si:last-child{border-right:none;}
+.sn{font-family:'DM Serif Display',serif;font-size:3rem;color:var(--sage);line-height:1;margin-bottom:.4rem;}
+.sn sup{font-size:1.2rem;vertical-align:super;}
+.sl{font-family:'Noto Sans JP',sans-serif;font-size:.72rem;letter-spacing:.1em;color:rgba(255,255,255,.45);}
+
+/* SECTION COMMON */
+.eyebrow{font-family:'Cormorant Garamond',serif;font-size:.85rem;letter-spacing:.35em;color:var(--sage);text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;font-weight:500;}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--sage);flex-shrink:0;}
+.sec-h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,3.5vw,3.2rem);line-height:1.05;color:var(--charcoal);}
+.sec-h2 em{color:var(--teal);font-style:italic;}
+
+/* CONCEPT SECTION */
+.sec-concept{padding:6rem 0;background:var(--charcoal);position:relative;overflow:hidden;}
+.concept-deco{position:absolute;right:4%;top:50%;transform:translateY(-50%);font-family:'Shippori Mincho',serif;font-size:28vh;font-weight:400;color:rgba(255,255,255,.025);writing-mode:vertical-rl;user-select:none;pointer-events:none;}
+.concept-in{max-width:1200px;margin:0 auto;padding:0 5rem;display:grid;grid-template-columns:1fr 1.2fr;gap:8rem;align-items:center;}
+.concept-vis{position:relative;}
+.concept-main{height:500px;overflow:hidden;position:relative;}
+.concept-main img{width:100%;height:100%;object-fit:cover;}
+.concept-accent{position:absolute;bottom:-2rem;right:-2rem;background:var(--teal);padding:1.8rem 2.2rem;z-index:10;}
+.ca-num{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--linen);line-height:1;}
+.ca-txt{font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.28em;color:rgba(245,242,236,.55);text-transform:uppercase;margin-top:.3rem;}
+.concept-eyebrow{font-family:'Cormorant Garamond',serif;font-size:1rem;letter-spacing:.3em;color:var(--sage);text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:1rem;font-weight:500;}
+.concept-eyebrow::before{content:'';width:24px;height:1px;background:var(--sage);}
+.concept-h2{font-family:'Shippori Mincho',serif;font-size:clamp(1.3rem,1.8vw,1.9rem);font-weight:500;line-height:1.7;color:var(--linen);margin-bottom:1.8rem;}
+.concept-body{font-size:1rem;line-height:2.4;color:rgba(245,242,236,.75);margin-bottom:1rem;}
+.concept-body-en{font-family:'DM Serif Display',serif;font-style:italic;font-size:.95rem;line-height:2;letter-spacing:.08em;color:rgba(245,242,236,.85);margin-top:.5rem;}
+.host-row{margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:1.2rem;}
+.hav{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--sage),var(--teal));display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--linen);flex-shrink:0;}
+.hn{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--linen);}
+.hr-role{font-family:'Tenor Sans',sans-serif;font-size:.75rem;letter-spacing:.15em;color:var(--sage);text-transform:uppercase;margin-top:.2rem;}
+
+/* PROPERTIES */
+.sec-props{padding:3rem 0;background:var(--linen);}
+.sec-intro{max-width:1200px;margin:0 auto 3rem;padding:0 5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:end;}
+.sec-sub{font-family:'Shippori Mincho',serif;font-size:1.3rem;font-weight:400;color:var(--stone);margin-top:1rem;letter-spacing:.15em;}
+.ibody{font-size:.86rem;line-height:2.1;color:var(--charcoal);margin-bottom:.8rem;}
+.area-lbl{max-width:1200px;margin:0 auto 0.5rem;padding:0 5rem;font-family:'Tenor Sans',sans-serif;font-size:.63rem;letter-spacing:.4em;text-transform:uppercase;color:var(--stone);display:flex;align-items:center;gap:1.5rem;}
+.area-lbl::before,.area-lbl::after{content:'';flex:1;height:1px;background:var(--mist);}
+.cards-wrap{max-width:1200px;margin:0 auto;padding:0 5rem;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;}
+.card{background:var(--cream);overflow:hidden;}
+.card:hover .ci-in img{transform:scale(1.04);}
+.ci{overflow:hidden;position:relative;height:320px;}
+.ci-in{width:100%;height:100%;}
+.ci-in img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1);}
+.cflag{position:absolute;top:1.6rem;left:1.6rem;padding:.32rem 1rem;font-family:'Tenor Sans',sans-serif;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--linen);}
+.cflag.sage{background:var(--sage);}
+.cflag.teal{background:var(--teal);}
+.cbody{padding:2.2rem 2.5rem 2.5rem;}
+.cloc{font-family:'Noto Sans JP',sans-serif;font-size:.82rem;letter-spacing:.1em;color:var(--charcoal);text-transform:uppercase;margin-bottom:.7rem;}
+.cname{font-family:'Shippori Mincho',serif;font-size:1.8rem;font-weight:500;color:var(--charcoal);letter-spacing:.08em;margin-bottom:.3rem;}
+.cen{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--taupe);letter-spacing:.04em;margin-bottom:1.4rem;}
+.cmeta{display:flex;gap:1.8rem;padding:1rem 0;border-top:1px solid var(--sand);border-bottom:1px solid var(--sand);margin-bottom:1.4rem;}
+.mv{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;color:var(--charcoal);}
+.mk{font-family:'Noto Sans JP',sans-serif;font-size:.72rem;color:var(--charcoal);margin-top:.2rem;font-weight:300;}
+.cdesc{font-size:.92rem;line-height:2;color:var(--charcoal);margin-bottom:1.6rem;}
+.atags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.8rem;}
+.atag{padding:.28rem .85rem;background:var(--linen);border:1px solid var(--mist);font-family:'Tenor Sans',sans-serif;font-size:.62rem;letter-spacing:.08em;color:var(--stone);}
+.clink{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.4rem;background:var(--charcoal);color:var(--linen);text-decoration:none;font-family:'Tenor Sans',sans-serif;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;transition:background .3s;cursor:pointer;}
+.clink:hover{background:var(--teal);}
+.maplink{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.65rem 1.2rem;
+  background:var(--linen);
+  border:1px solid var(--sand);
+  border-radius:2px;
+  margin-bottom:1rem;
+  font-family:'Noto Sans JP',sans-serif;
+  font-size:.78rem;
+  font-weight:300;
+  color:var(--charcoal);
+  text-decoration:none;
+  transition:all .3s;
+  width:100%;
+  justify-content:center;
+}
+.maplink:hover{background:var(--sand);color:var(--charcoal);}
+.maplink svg{color:var(--teal);flex-shrink:0;}
+.maplink:hover{color:var(--sage);}
+
+/* GALLERY SECTION（大福） */
+.sec-gallery{background:var(--charcoal);overflow:hidden;}
+.gallery-title{padding:4rem 5rem 2rem;max-width:1200px;margin:0 auto;}
+.gallery-title .eyebrow{color:var(--sage);}
+.gallery-title .eyebrow::before{background:var(--sage);}
+.gallery-h2{font-family:'Shippori Mincho',serif;font-size:clamp(2rem,3vw,3rem);color:var(--linen);text-shadow:0 1px 3px rgba(0,0,0,.3);font-weight:500;letter-spacing:.15em;}
+.gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:280px 280px;gap:3px;}
+.gcell{overflow:hidden;cursor:pointer;position:relative;}
+.gcell:first-child{grid-row:1/3;}
+.gcell img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);}
+.gcell:hover img{transform:scale(1.05);}
+.gcell-label{position:absolute;bottom:1.2rem;right:1.2rem;background:rgba(28,26,24,.65);padding:.4rem 1rem;font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.25em;color:rgba(245,242,236,.8);text-transform:uppercase;}
+
+/* GALLERY SECTION（千鳥橋） */
+.sec-chidori-gallery{padding:0;background:var(--deep);overflow:hidden;}
+.chidori-gallery-header{padding:4rem 5rem 2rem;max-width:1200px;margin:0 auto;}
+.chidori-gallery-header .eyebrow{color:var(--sage);}
+.chidori-gallery-header .eyebrow::before{background:var(--sage);}
+.cgallery-h2{font-family:'Shippori Mincho',serif;font-size:clamp(2rem,3vw,3rem);color:var(--linen);text-shadow:0 1px 3px rgba(0,0,0,.3);font-weight:500;letter-spacing:.15em;}
+.chidori-grid{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:300px 220px;gap:3px;}
+.chidori-cell{overflow:hidden;cursor:pointer;position:relative;}
+.chidori-cell:first-child{grid-column:1/3;}
+.chidori-cell img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.chidori-cell:hover img{transform:scale(1.05);}
+.chidori-label{position:absolute;bottom:1.2rem;left:1.2rem;background:rgba(28,26,24,.65);padding:.4rem 1rem;font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.25em;color:rgba(245,242,236,.8);text-transform:uppercase;}
+/* 千鳥橋のアメニティ詳細グリッド */
+.chidori-amenity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.cam-cell{overflow:hidden;cursor:pointer;}
+.cam-cell img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.cam-cell:hover img{transform:scale(1.05);}
+
+/* BOOKING */
+.sec-booking{padding:5rem 0;background:#f3ede4;}
+.booking-inner{max-width:1200px;margin:0 auto;padding:0 5rem;}
+.booking-header{text-align:center;margin-bottom:4rem;}
+.booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.booking-card{background:var(--linen);padding:2.5rem;}
+.booking-card-chidori{border-top:3px solid var(--sage);}
+.booking-card-daifuku{border-top:3px solid var(--teal);}
+.booking-card h3{font-family:'Shippori Mincho',serif;font-size:1.5rem;font-weight:500;color:var(--charcoal);margin-bottom:.3rem;}
+.booking-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--stone);margin-bottom:1.5rem;letter-spacing:.03em;}
+.booking-widget{background:var(--charcoal);padding:1.8rem;margin:1.5rem 0;}
+.widget-title{font-family:'Cormorant Garamond',serif;font-size:.9rem;letter-spacing:.2em;color:var(--sage);font-weight:500;margin-bottom:1rem;}
+.widget-fields{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:.7rem;}
+.widget-label{font-family:'Tenor Sans',sans-serif;font-size:.55rem;letter-spacing:.2em;color:var(--stone);text-transform:uppercase;display:block;margin-bottom:.35rem;}
+.widget-input,.widget-select{width:100%;padding:.65rem .8rem;background:rgba(255,255,255,.07);border:1px solid rgba(122,140,117,.3);color:var(--linen);font-family:'Noto Sans JP',sans-serif;font-size:.82rem;outline:none;cursor:pointer;appearance:none;}
+.widget-note{font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.1em;color:rgba(245,242,236,.3);margin-top:.8rem;line-height:1.6;}
+.btn-row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.2rem;}
+.btn-airbnb{display:flex;align-items:center;justify-content:center;gap:.5rem;flex:1;padding:.9rem 1.2rem;background:#4a4540;color:var(--linen);text-decoration:none;font-family:'Noto Sans JP',sans-serif;font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:all .3s;min-width:110px;border:1px solid #4a4540;}
+.btn-airbnb:hover{background:transparent;color:#4a4540;}
+.btn-booking{display:flex;align-items:center;justify-content:center;gap:.5rem;flex:1;padding:.9rem 1.2rem;background:var(--teal);color:var(--linen);text-decoration:none;font-family:'Noto Sans JP',sans-serif;font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:all .3s;min-width:110px;border:1px solid var(--teal);}
+.btn-booking:hover{background:transparent;color:var(--teal);}
+.coming-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--sage);color:var(--linen);padding:.45rem 1.2rem;font-family:'Noto Sans JP',sans-serif;font-size:.78rem;letter-spacing:.05em;margin-bottom:1rem;}
+
+/* CONTACT（コンパクト・最後に小さく） */
+.sec-contact{padding:2rem 0 2rem;background:var(--linen);border-top:1px solid var(--mist);}
+.cnt-in{max-width:900px;margin:0 auto;padding:0 5rem;}
+.cnt-header{text-align:center;margin-bottom:1.5rem;}
+.cnt-header .eyebrow{justify-content:center;}
+.cnt-h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,2.5vw,2.5rem);color:var(--charcoal);text-align:center;margin-bottom:.5rem;}
+.cnt-sub{font-family:'Noto Sans JP',sans-serif;font-size:.88rem;line-height:2;color:rgba(58,58,58,.85);margin-top:.5rem;}
+.cnt-form{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.fg{margin-bottom:0;}
+.fl{display:block;font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--stone);margin-bottom:.5rem;}
+.fi,.fsl,.fta{width:100%;padding:.8rem 0;background:transparent;border:none;border-bottom:1px solid var(--sand);color:var(--charcoal);font-family:'Noto Sans JP',sans-serif;font-size:.86rem;font-weight:300;outline:none;transition:border-color .3s;appearance:none;}
+.fi:focus,.fsl:focus,.fta:focus{border-bottom-color:var(--sage);}
+.fta{height:80px;resize:none;}
+.cnt-full{grid-column:1/-1;}
+.fsub{width:100%;padding:1rem;background:var(--charcoal);color:var(--linen);border:none;font-family:'Tenor Sans',sans-serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;cursor:pointer;transition:background .3s;margin-top:.5rem;}
+.fsub:hover{background:var(--teal);}
+
+/* FOOTER */
+footer{background:var(--deep);padding:2rem 0 1.5rem;}
+.ft{max-width:1200px;margin:0 auto;padding:0 5rem;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:6rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:1.2rem;}
+.ftl{font-family:'Noto Sans JP',sans-serif;font-size:1.05rem;letter-spacing:.1em;color:#a8c5a0;font-weight:700;text-transform:uppercase;margin-bottom:1.8rem;}
+.flinks{list-style:none;}
+.flinks li{margin-bottom:.9rem;}
+.flinks a{text-decoration:none;color:#ffffff;font-size:1.05rem;transition:color .3s;cursor:pointer;font-family:'Noto Sans JP',sans-serif;font-weight:200;display:flex;align-items:center;gap:.5rem;}
+.flinks a:hover{color:var(--sage);}
+.ftag{font-family:'Shippori Mincho',serif;font-size:1.05rem;line-height:2;color:#ffffff;margin-top:1.2rem;font-weight:400;}
+.ftagen{color:#ffffff;font-family:'DM Serif Display',serif;font-style:italic;font-size:.92rem;margin-top:.4rem;}
+.fb{max-width:1200px;margin:0 auto;padding:.5rem 5rem;display:flex;justify-content:space-between;align-items:center;}
+.copy{font-family:'Tenor Sans',sans-serif;font-size:.9rem;letter-spacing:.2em;color:#ffffff;}
+.lic{font-family:'Tenor Sans',sans-serif;font-size:.9rem;letter-spacing:.12em;color:#ffffff;border:1px solid rgba(255,255,255,.5);padding:.28rem .75rem;}
+
+/* REVEAL */
+.reveal{opacity:1;transform:translateY(0);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+.reveal.vis{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+
+/* LANG */
+.ja{display:block;}.en{display:none;}
+.jai{display:inline;}.eni{display:none;}
+body.enlang .ja{display:none;}body.enlang .en{display:block;}
+body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;}
+  .hr2{height:50vh;}
+  .cards-wrap,.booking-grid,.cnt-form,.ft,.sec-intro,.concept-in{grid-template-columns:1fr;gap:2rem;}
+  .cards-wrap,.booking-inner,.area-lbl,.sec-intro,.concept-in,.cnt-in,.ft,.fb,.gallery-title,.chidori-gallery-header{padding:0 2rem;}
+  nav{padding:1.5rem 2rem;} nav.sc{padding:1rem 2rem;}
+  .nmenu{display:none;}
+  .hbadge{display:none;}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .gcell:first-child{grid-row:auto;}
+  .chidori-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .chidori-cell:first-child{grid-column:auto;}
+  .chidori-amenity-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="cursor" id="cr"></div>
+<div class="cursor-f" id="cf"></div>
+
+<!-- Lang -->
+<div class="lang-bar">
+  <button class="lbtn on" onclick="setL('ja')">日本語</button>
+  <span class="lsep">/</span>
+  <button class="lbtn" onclick="setL('en')">English</button>
+  <a href="https://www.instagram.com/ena_guesthouse2025/?hl=ja" target="_blank" rel="noopener" style="display:flex;align-items:center;margin-left:.4rem;color:var(--stone);">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+      <circle cx="12" cy="12" r="4"></circle>
+      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle>
+    </svg>
+  </a>
+</div>
+
+<!-- Nav -->
+<nav id="nav">
+  <a href="#" class="logo"><span class="logo-text" style="color:#1a1a1a;">E-<em>NA</em></span></a>
+  <div class="nav-center">
+    <ul class="nmenu">
+      <li><a href="#" class="jai">TOP</a></li>
+      <li><a href="#props" class="jai">ゲストハウス</a></li>
+      <li><a href="#reserve" class="jai">宿泊予約</a></li>
+      <li><a href="#access" class="jai">アクセス</a></li>
+      <li><a href="#concept" class="jai">想い</a></li>
+      <li><a href="#contact" class="jai">お問合せ</a></li>
+    </ul>
+
+  </div>
+  <div class="lang-btns" style="display:flex;align-items:center;gap:.3rem;">
+    <button class="lbtn on" onclick="setL('ja')">日本語</button>
+    <button class="lbtn" onclick="setL('en')">English</button>
+    <a href="https://www.instagram.com/ena_guesthouse2025/?hl=ja" target="_blank" rel="noopener" style="display:flex;align-items:center;margin-left:.4rem;color:#E1306C;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <circle cx="12" cy="12" r="4"></circle>
+        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle>
+      </svg>
+    </a>
+  </div>
+</nav>
+
+<!-- ① HERO -->
+<section class="hero">
+  <div class="hl">
+    <div class="hl-photo" style="background-image:url('images/img_01.jpg');"></div>
+    <div class="hl-overlay"></div>
+    <div class="hkbg">和</div>
+    <p class="htag">Private Stay · 貸切民泊</p>
+    <h1 class="hh1">E-<em>NA</em></h1>
+    <div class="hrule"></div>
+    <div class="hdesc">
+      <p class="ja">ホテルとは違う、広々とした空間で</p>
+      <p class="ja">ゆったりと、自分らしく過ごす滞在。</p>
+      <small class="eni">Spacious, private &amp; entirely yours.</small>
+    </div>
+    <div class="hcta">
+      <a href="#props" class="bg"><span><span class="jai">ゲストハウスへ</span><span class="eni">View Guesthouses</span></span><span class="arr">→</span></a>
+      <a href="#reserve" class="bf"><span class="jai">ご予約</span><span class="eni">Book Now</span></a>
+    </div>
+  </div>
+  <div class="hr2">
+    <div class="hr2-in">
+      <div class="img-top"><img src="images/hero_right_top.jpg" style="width:100%;height:100%;object-fit:cover;" alt="E-NA 大福 リビング"></div>
+      <div class="img-bot">
+        <div class="ithumb"><img src="images/hero_thumb_1.jpg" style="width:100%;height:100%;object-fit:cover;" alt="寝室"></div>
+        <div class="ithumb"><img src="images/hero_thumb_2.jpg" style="width:100%;height:100%;object-fit:cover;" alt="ベッドルーム"></div>
+        <div class="ithumb"><img src="images/thumb_new1.jpg" style="width:100%;height:100%;object-fit:cover;" alt="千鳥橋リビング"></div>
+        <div class="ithumb"><img src="images/thumb_new2.avif" style="width:100%;height:100%;object-fit:cover;" alt="大福部屋"></div>
+      </div>
+    </div>
+    <div class="vtext">Osaka · Japan</div>
+  </div>
+</section>
+
+
+<!-- ② PROPERTIES -->
+<section class="sec-props" id="props">
+  <div class="sec-intro">
+    <div class="reveal">
+      <p class="eyebrow"><span class="jai">ゲストハウス</span><span class="eni">Guesthouses</span></p>
+      <h2 class="sec-h2" style="white-space:nowrap;">Welcome to <em style="color:var(--sage);">E-NA</em></h2>
+      <p class="sec-sub ja">暮らすように旅する、特別なひとときを。</p>
+      <p class="sec-sub en" style="display:none">Find your home in Osaka.</p>
+    </div>
+    <div class="reveal d2">
+      <p class="ibody ja">家族や大切な人と、ゆったり過ごせる貸切空間。E-NAは、ホテルにはない温もりと、日常の心地よさを感じられる場所です。家のようにくつろぎながら、自由で特別な時間をお楽しみください。</p>
+      <p class="ibody en" style="display:none">Both properties are entirely yours — real living spaces, not hotel rooms.</p>
+    </div>
+  </div>
+  
+  <div class="cards-wrap">
+    <!-- E-NA（千鳥橋）先 -->
+    <div class="card reveal">
+      <div class="cbody">
+        <div style="display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;margin-bottom:1.2rem;">
+          <div>
+            <p class="cloc"><span class="jai">大阪市 · 千鳥橋駅 徒歩3分</span><span class="eni">Osaka · 3 min from Chidoribashi Sta.</span></p>
+            <h3 class="cname">E-NA</h3>
+            <p class="cen">Chidoribashi · Entire 2-Story House + Loft</p>
+          </div>
+          <div style="width:180px;height:130px;border-radius:10px;overflow:hidden;flex-shrink:0;">
+            <img src="images/img_07.jpg" style="width:100%;height:100%;object-fit:cover;" alt="E-NA 千鳥橋">
+          </div>
+        </div>
+        <div class="cmeta"><div style="text-align:left;"><div style="font-family:'Noto Sans JP',sans-serif;font-size:.65rem;color:var(--stone);margin-bottom:.3rem;">Area</div><div style="font-family:'Shippori Mincho',serif;font-size:1.6rem;font-weight:700;color:var(--charcoal);line-height:1.2;">38<small style="font-size:.85rem">㎡</small></div></div><div style="text-align:left;"><div style="font-family:'Noto Sans JP',sans-serif;font-size:.65rem;color:var(--stone);margin-bottom:.3rem;"><span class="jai">最大人数</span><span class="eni">Max</span></div><div style="font-family:'Shippori Mincho',serif;font-size:1.6rem;font-weight:700;color:var(--charcoal);line-height:1.2;">5</div></div><div style="text-align:left;"><div style="font-family:'Noto Sans JP',sans-serif;font-size:.65rem;color:var(--stone);margin-bottom:.3rem;"><span class="jai">寝室</span><span class="eni">Beds</span></div><div style="font-family:'Shippori Mincho',serif;font-size:1.6rem;font-weight:700;color:var(--charcoal);line-height:1.2;"><span style="font-size:.85rem;line-height:1.6;">ダブルベッド1<br>ソファベッド1<br>布団2組</span></div></div></div>
+        <p class="cdesc ja" style="margin-top:1.2rem;">2階建て＋ロフト付きの一軒家をまるごと貸切。・難波約10分、USJ約15分、海遊館約20分。大阪らしい商店街散策も楽しめる、ロフト付き一棟貸しのお宿です。</p>
+        <p class="cdesc en" style="display:none;margin-top:1.2rem;">Entire 2-story house + loft, exclusively yours. 3 min from Chidoribashi Station. 10 min to USJ & Namba.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.5rem;margin-top:1rem;">
+          <a href="https://maps.app.goo.gl/Vt9aM671k2EH87Rd6" target="_blank" style="display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:.8rem .4rem;background:#f8f5f0;border:1px solid #e0d8cc;border-radius:10px;text-decoration:none;color:var(--charcoal);font-family:'Noto Sans JP',sans-serif;font-size:.68rem;text-align:center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--teal)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span class="jai">Googleマップで<br>場所を確認</span><span class="eni">Google Maps</span>
+          </a>
+          <a href="gallery_chidoribashi.html" target="_blank" style="display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:.8rem .4rem;background:#f8f5f0;border:1px solid #e0d8cc;border-radius:10px;text-decoration:none;color:var(--charcoal);font-family:'Noto Sans JP',sans-serif;font-size:.68rem;text-align:center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span class="jai">フォトギャラリーを<br>見る</span><span class="eni">Gallery</span>
+          </a>
+          <a href="https://www.airbnb.jp/rooms/1422156631181809424" target="_blank" style="display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:.8rem .4rem;background:#f8f5f0;border:1px solid #e0d8cc;border-radius:10px;text-decoration:none;color:var(--charcoal);font-family:'Noto Sans JP',sans-serif;font-size:.68rem;text-align:center;">
+            <img src="images/img_08.png" style="width:26px;height:26px;object-fit:contain;">
+            <span class="jai">Airbnbで<br>予約</span><span class="eni">Airbnb</span>
+          </a>
+          <a href="https://www.booking.com/Share-XzSNQUV" target="_blank" style="display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:.8rem .4rem;background:#f8f5f0;border:1px solid #e0d8cc;border-radius:10px;text-decoration:none;color:var(--charcoal);font-family:'Noto Sans JP',sans-serif;font-size:.68rem;text-align:center;">
+            <span style="background:#003580;color:#fff;font-weight:900;font-size:1rem;border-radius:6px;padding:2px 6px;line-height:1.4;">B.</span>
+            <span class="jai">Booking.comで<br>予約</span><span class="eni">Booking.com</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- E-NA 大福 後 -->
+    <div class="card reveal d2">
+      <div class="cbody">
+        <div style="display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;margin-bottom:1.2rem;">
+          <div>
+            <p class="cloc"><span class="jai">大阪市 · 岸里駅 徒歩3分</span><span class="eni">Osaka · 3 min from Kishinosato Sta.</span></p>
+            <h3 class="cname">E-NA 大福</h3>
+            <p class="cen">Daifuku · Japanese Modern · Entire House</p>
+          </div>
+          <div style="width:180px;height:130px;border-radius:10px;overflow:hidden;flex-shrink:0;">
+            <img src="images/img_09.avif" style="width:100%;height:100%;object-fit:cover;" alt="E-NA 大福">
+          </div>
+        </div>
+        <div class="cmeta"><div style="text-align:left;"><div style="font-family:'Noto Sans JP',sans-serif;font-size:.65rem;color:var(--stone);margin-bottom:.3rem;">Area</div><div style="font-family:'Shippori Mincho',serif;font-size:1.6rem;font-weight:700;color:var(--charcoal);line-height:1.2;">66<small style="font-size:.85rem">㎡</small></div></div><div style="text-align:left;"><div style="font-family:'Noto Sans JP',sans-serif;font-size:.65rem;color:var(--stone);margin-bottom:.3rem;"><span class="jai">最大人数</span><span class="eni">Max</span></div><div style="font-family:'Shippori Mincho',serif;font-size:1.6rem;font-weight:700;color:var(--charcoal);line-height:1.2;">8</div></div><div style="text-align:left;"><div style="font-family:'Noto Sans JP',sans-serif;font-size:.65rem;color:var(--stone);margin-bottom:.3rem;"><span class="jai">寝室</span><span class="eni">Beds</span></div><div style="font-family:'Shippori Mincho',serif;font-size:1.6rem;font-weight:700;color:var(--charcoal);line-height:1.2;"><span style="font-size:.85rem;line-height:1.6;">クイーンベッド1<br>シングルベッド4<br>布団2組</span></div></div></div>
+        <p class="cdesc ja" style="margin-top:1.2rem;">和モダンなインテリアで統一された落ち着きのある空間。関西空港へ直通アクセス可能で、旅行の初日や最終日も安心です。静かな住宅街に位置し、スーパーや飲食店も徒歩圏内。暮らすような大阪滞在をお楽しみいただけます。</p>
+        <p class="cdesc en" style="display:none;margin-top:1.2rem;">66㎡ Japanese modern house, entirely yours. 3 bedrooms + loft, perfect for families. 10 min to Namba, direct to KIX.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.5rem;margin-top:1rem;">
+          <a href="https://maps.app.goo.gl/BZ3ELjqbUQVNwkmd6" target="_blank" style="display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:.8rem .4rem;background:#f8f5f0;border:1px solid #e0d8cc;border-radius:10px;text-decoration:none;color:var(--charcoal);font-family:'Noto Sans JP',sans-serif;font-size:.68rem;text-align:center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--teal)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span class="jai">Googleマップで<br>場所を確認</span><span class="eni">Google Maps</span>
+          </a>
+          <a href="gallery_daifuku.html" target="_blank" style="display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:.8rem .4rem;background:#f8f5f0;border:1px solid #e0d8cc;border-radius:10px;text-decoration:none;color:var(--charcoal);font-family:'Noto Sans JP',sans-serif;font-size:.68rem;text-align:center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span class="jai">フォトギャラリーを<br>見る</span><span class="eni">Gallery</span>
+          </a>
+          <a href="https://www.airbnb.jp/rooms/1552494957545601946" target="_blank" style="display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:.8rem .4rem;background:#f8f5f0;border:1px solid #e0d8cc;border-radius:10px;text-decoration:none;color:var(--charcoal);font-family:'Noto Sans JP',sans-serif;font-size:.68rem;text-align:center;">
+            <img src="images/img_08.png" style="width:26px;height:26px;object-fit:contain;">
+            <span class="jai">Airbnbで<br>予約</span><span class="eni">Airbnb</span>
+          </a>
+          <a href="https://www.booking.com/Share-JAPvuv" target="_blank" style="display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:.8rem .4rem;background:#f8f5f0;border:1px solid #e0d8cc;border-radius:10px;text-decoration:none;color:var(--charcoal);font-family:'Noto Sans JP',sans-serif;font-size:.68rem;text-align:center;">
+            <span style="background:#003580;color:#fff;font-weight:900;font-size:1rem;border-radius:6px;padding:2px 6px;line-height:1.4;">B.</span>
+            <span class="jai">Booking.comで<br>予約</span><span class="eni">Booking.com</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ⑤ BOOKING -->
+<!-- 予約フォーム（非表示保管） -->
+<div style="display:none;" id="booking-form-hidden">
+<section class="sec-booking" id="booking">
+  <div class="booking-inner">
+    <div class="booking-header reveal">
+      <p class="eyebrow" style="justify-content:center;"><span class="jai">ご予約</span><span class="eni">Reservation</span></p>
+      <h2 class="sec-h2" style="text-align:center;font-family:'Shippori Mincho',serif;"><span class="jai">空き確認・ご予約</span><span class="eni">Check Availability & Book</span></h2>
+      <div style="width:60px;height:1px;background:var(--sage);margin:1.5rem auto;"></div>
+      <p style="font-family:'Shippori Mincho',serif;font-size:1rem;color:var(--stone);text-align:center;" class="ja">日程・物件・人数をご記入の上、送信してください。<br>ご確認後、3日以内にご返信いたします。</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--stone);text-align:center;opacity:.8;" class="en">Fill in your dates and details — we'll confirm within 3 days.</p>
+    </div>
+
+    <div style="max-width:760px;margin:0 auto;">
+      <form id="reservation-form" onsubmit="submitReservation(event)" style="background:#fff;padding:2.5rem 3rem;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.07);position:relative;">
+
+        <!-- 物件選択 -->
+        <div style="margin-bottom:2rem;">
+          <label style="display:block;font-family:'Noto Sans JP',sans-serif;font-size:.88rem;color:var(--charcoal);margin-bottom:.8rem;font-weight:500;">
+            <span class="jai">ご希望の物件 *</span><span class="eni">Property *</span>
+          </label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <label id="lbl-ena" for="prop-ena" style="display:flex;align-items:center;gap:.8rem;padding:1.2rem 1rem;border:2px solid #ddd;border-radius:8px;cursor:pointer;transition:all .3s;background:#fafafa;" onclick="selectProp('ena')">
+              <input type="radio" name="property" value="E-NA" id="prop-ena" style="position:absolute;opacity:0;width:0;height:0;">
+              <div id="radio-ena" style="width:20px;height:20px;border:2px solid #aaa;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .3s;"></div>
+              <div>
+                <div style="font-family:'Shippori Mincho',serif;font-size:1rem;font-weight:600;color:var(--charcoal);">E-NA</div>
+                <div style="font-family:'Noto Sans JP',sans-serif;font-size:.75rem;color:#888;margin-top:.15rem;">千鳥橋 · 最大5名</div>
+              </div>
+            </label>
+            <label id="lbl-daifuku" for="prop-daifuku" style="display:flex;align-items:center;gap:.8rem;padding:1.2rem 1rem;border:2px solid #ddd;border-radius:8px;cursor:pointer;transition:all .3s;background:#fafafa;" onclick="selectProp('daifuku')">
+              <input type="radio" name="property" value="E-NA大福" id="prop-daifuku" style="position:absolute;opacity:0;width:0;height:0;">
+              <div id="radio-daifuku" style="width:20px;height:20px;border:2px solid #aaa;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .3s;"></div>
+              <div>
+                <div style="font-family:'Shippori Mincho',serif;font-size:1rem;font-weight:600;color:var(--charcoal);">E-NA 大福</div>
+                <div style="font-family:'Noto Sans JP',sans-serif;font-size:.75rem;color:#888;margin-top:.15rem;">岸里 · 最大8名</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- 日程 -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:.8rem;">
+          <div>
+            <label style="display:block;font-family:'Noto Sans JP',sans-serif;font-size:.88rem;color:var(--charcoal);margin-bottom:.6rem;font-weight:500;">
+              <span class="jai">チェックイン *</span><span class="eni">Check-in *</span>
+            </label>
+            <input type="date" id="res-ci" required
+              style="width:100%;padding:.9rem 1rem;background:#fafafa;border:1px solid #ddd;border-radius:6px;font-family:'Noto Sans JP',sans-serif;font-size:.9rem;color:var(--charcoal);outline:none;">
+          </div>
+          <div>
+            <label style="display:block;font-family:'Noto Sans JP',sans-serif;font-size:.88rem;color:var(--charcoal);margin-bottom:.6rem;font-weight:500;">
+              <span class="jai">チェックアウト *</span><span class="eni">Check-out *</span>
+            </label>
+            <input type="date" id="res-co" required
+              style="width:100%;padding:.9rem 1rem;background:#fafafa;border:1px solid #ddd;border-radius:6px;font-family:'Noto Sans JP',sans-serif;font-size:.9rem;color:var(--charcoal);outline:none;">
+          </div>
+        </div>
+
+        <!-- 日程注意書き -->
+        <div style="background:#fafafa;border:1px solid #e0e0e0;border-radius:6px;padding:.9rem 1.2rem;margin-bottom:2rem;display:flex;align-items:flex-start;gap:.6rem;">
+          <span style="font-size:1rem;flex-shrink:0;">ℹ️</span>
+          <div>
+            <p style="font-family:'Noto Sans JP',sans-serif;font-size:.82rem;color:#555;font-weight:500;line-height:1.9;" class="ja">大阪市特区民泊のため、<strong>最低2泊3日以上</strong>のご予約が必要です。</p>
+            <p style="font-family:'Noto Sans JP',sans-serif;font-size:.82rem;color:#555;font-weight:500;line-height:1.9;" class="en">Minimum <strong>2 nights</strong> required (Osaka Special Zone).</p>
+          </div>
+        </div>
+
+        <!-- 人数 -->
+        <div style="margin-bottom:1.6rem;">
+          <label style="display:block;font-family:'Noto Sans JP',sans-serif;font-size:.88rem;color:var(--charcoal);margin-bottom:.6rem;font-weight:500;">
+            <span class="jai">宿泊人数 *</span><span class="eni">Number of Guests *</span>
+          </label>
+          <select id="res-guests" required
+            style="width:100%;padding:.9rem 1rem;background:#fafafa;border:1px solid #ddd;border-radius:6px;font-family:'Noto Sans JP',sans-serif;font-size:.9rem;color:var(--charcoal);outline:none;appearance:none;cursor:pointer;">
+            <option value="">人数を選択してください / Select</option>
+            <option value="1">1人 / 1 Guest</option>
+            <option value="2">2人 / 2 Guests</option>
+            <option value="3">3人 / 3 Guests</option>
+            <option value="4">4人 / 4 Guests</option>
+            <option value="5">5人 / 5 Guests</option>
+            <option value="6">6人 / 6 Guests</option>
+            <option value="7">7人 / 7 Guests</option>
+            <option value="8">8人 / 8 Guests</option>
+          </select>
+        </div>
+
+        <!-- 名前 -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.6rem;">
+          <div>
+            <label style="display:block;font-family:'Noto Sans JP',sans-serif;font-size:.88rem;color:var(--charcoal);margin-bottom:.6rem;font-weight:500;">
+              <span class="jai">お名前 *</span><span class="eni">Name *</span>
+            </label>
+            <input type="text" id="res-name" required placeholder="例）山田 花子 / Yamada Hanako"
+              style="width:100%;padding:.9rem 1rem;background:#fafafa;border:1px solid #ddd;border-radius:6px;font-family:'Noto Sans JP',sans-serif;font-size:.9rem;color:var(--charcoal);outline:none;">
+          </div>
+          <div>
+            <label style="display:block;font-family:'Noto Sans JP',sans-serif;font-size:.88rem;color:var(--charcoal);margin-bottom:.6rem;font-weight:500;">Email *</label>
+            <input type="email" id="res-email" required placeholder="例）email@example.com"
+              style="width:100%;padding:.9rem 1rem;background:#fafafa;border:1px solid #ddd;border-radius:6px;font-family:'Noto Sans JP',sans-serif;font-size:.9rem;color:var(--charcoal);outline:none;">
+          </div>
+        </div>
+
+        <!-- メッセージ -->
+        <div style="margin-bottom:2rem;">
+          <label style="display:block;font-family:'Noto Sans JP',sans-serif;font-size:.88rem;color:var(--charcoal);margin-bottom:.6rem;font-weight:500;">
+            <span class="jai">ご要望・ご質問（任意）</span><span class="eni">Message (optional)</span>
+          </label>
+          <textarea id="res-msg" rows="3" placeholder="ご要望・ご質問があればご記入ください / Any special requests or questions"
+            style="width:100%;padding:.9rem 1rem;background:#fafafa;border:1px solid #ddd;border-radius:6px;font-family:'Noto Sans JP',sans-serif;font-size:.9rem;color:var(--charcoal);outline:none;resize:none;"></textarea>
+        </div>
+
+        <!-- 送信ボタン -->
+        <button type="submit" id="res-submit"
+          style="width:100%;padding:1.2rem 2rem;background:#4a5c45;color:#fff;border:none;border-radius:8px;font-family:'Shippori Mincho',serif;font-size:1.05rem;letter-spacing:.15em;cursor:pointer;transition:background .3s;display:flex;align-items:center;justify-content:space-between;">
+          <span style="flex:1;text-align:center;"><span class="jai">予約リクエストを送信する</span><span class="eni">Send Reservation Request</span></span>
+          <span style="font-size:1.2rem;">→</span>
+        </button>
+
+        <!-- 送信後メッセージ -->
+        <div id="res-success" style="display:none;text-align:center;padding:2rem 0;">
+          <div style="font-size:2rem;margin-bottom:.8rem;">✅</div>
+          <p style="font-family:'Shippori Mincho',serif;font-size:1.1rem;color:var(--charcoal);" class="ja">ご予約リクエストを受け付けました。<br>3日以内にご連絡いたします。</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--stone);" class="en">Your request has been received. We'll be in touch within 3 days!</p>
+        </div>
+
+        <!-- 注記 -->
+        <div style="background:#fafafa;border:1px solid #e0e0e0;border-radius:6px;padding:.9rem 1.2rem;margin-top:1.2rem;display:flex;align-items:flex-start;gap:.6rem;">
+          <span style="font-size:1rem;flex-shrink:0;">ℹ️</span>
+          <div>
+            <p style="font-family:'Noto Sans JP',sans-serif;font-size:.82rem;color:#555;line-height:1.9;" class="ja">• ご予約確定後に詳細をご連絡します。<br>• 外国籍の方はパスポートのご提出をお願いいたします。</p>
+            <p style="font-family:'Noto Sans JP',sans-serif;font-size:.82rem;color:#555;line-height:1.9;" class="en">• Details will be sent after confirmation.<br>• Foreign guests: passport submission required.</p>
+          </div>
+        </div>
+      </form>
+
+<!-- AirbnbとBookingリンク -->
+<div id="ext-booking"></div>
+      <div style="margin-top:2rem;padding:2rem 1.5rem;border-top:2px solid var(--sage);background:var(--cream);">
+        <p style="font-family:'Shippori Mincho',serif;font-size:1rem;color:var(--charcoal);text-align:center;margin-bottom:.4rem;font-weight:600;" class="ja">📅 外部サイトからもご予約いただけます</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--charcoal);text-align:center;margin-bottom:1.6rem;" class="en">📅 Also available on booking platforms</p>
+
+        <!-- 千鳥橋 -->
+        <p style="font-family:'Shippori Mincho',serif;font-size:.9rem;color:var(--teal);font-weight:700;text-align:center;margin-bottom:.7rem;" class="ja">🌸 E-NA 千鳥橋</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem;">
+          <a href="https://www.airbnb.jp/rooms/1422156631181809424" target="_blank" style="display:flex;align-items:center;gap:1rem;padding:1.1rem 1.5rem;background:#FF5A5F;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:.95rem;font-weight:600;text-decoration:none;border-radius:12px;transition:opacity .3s;justify-content:space-between;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+            <span style="display:flex;align-items:center;gap:.8rem;"><img src="images/img_08.png" style="width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;" alt="Airbnb"><span>Airbnbで予約<br><span style="font-size:.72rem;font-weight:400;opacity:.85;">（外部サイトへ）</span></span></span>
+            <span style="font-size:1.2rem;">→</span>
+          </a>
+          <a href="https://www.booking.com/Share-XzSNQUV" target="_blank" style="display:flex;align-items:center;gap:1rem;padding:1.1rem 1.5rem;background:#003580;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:.95rem;font-weight:600;text-decoration:none;border-radius:12px;transition:opacity .3s;justify-content:space-between;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+            <span style="display:flex;align-items:center;gap:.8rem;"><span style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:#fff;border-radius:8px;font-size:1.1rem;font-weight:900;color:#003580;flex-shrink:0;">B.</span><span>Booking.comで予約<br><span style="font-size:.72rem;font-weight:400;opacity:.85;">（外部サイトへ）</span></span></span>
+            <span style="font-size:1.2rem;">→</span>
+          </a>
+        </div>
+
+        <!-- 大福 -->
+        <p style="font-family:'Shippori Mincho',serif;font-size:.9rem;color:var(--teal);font-weight:700;text-align:center;margin-bottom:.7rem;" class="ja">🌿 E-NA 大福</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <a href="https://www.airbnb.jp/rooms/1552494957545601946" target="_blank" style="display:flex;align-items:center;gap:1rem;padding:1.1rem 1.5rem;background:#FF5A5F;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:.95rem;font-weight:600;text-decoration:none;border-radius:12px;transition:opacity .3s;justify-content:space-between;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+            <span style="display:flex;align-items:center;gap:.8rem;"><img src="images/img_08.png" style="width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;" alt="Airbnb"><span>Airbnbで予約<br><span style="font-size:.72rem;font-weight:400;opacity:.85;">（外部サイトへ）</span></span></span>
+            <span style="font-size:1.2rem;">→</span>
+          </a>
+          <a href="https://www.booking.com/Share-JAPvuv" target="_blank" style="display:flex;align-items:center;gap:1rem;padding:1.1rem 1.5rem;background:#003580;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:.95rem;font-weight:600;text-decoration:none;border-radius:12px;transition:opacity .3s;justify-content:space-between;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+            <span style="display:flex;align-items:center;gap:.8rem;"><span style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:#fff;border-radius:8px;font-size:1.1rem;font-weight:900;color:#003580;flex-shrink:0;">B.</span><span>Booking.comで予約<br><span style="font-size:.72rem;font-weight:400;opacity:.85;">（外部サイトへ）</span></span></span>
+            <span style="font-size:1.2rem;">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ⑥ CONCEPT（「ええな〜」とお問い合わせを統合） -->
+<section style="padding:2rem 0 1.5rem;background:var(--linen);" id="access">
+  <div style="max-width:1200px;margin:0 auto;padding:0 5rem;">
+    <div style="text-align:center;margin-bottom:3rem;" class="reveal">
+      <p style="font-family:'Tenor Sans',sans-serif;font-size:.63rem;letter-spacing:.4em;color:var(--sage);text-transform:uppercase;margin-bottom:.8rem;">— アクセス —</p>
+      <h2 style="font-family:'Shippori Mincho',serif;font-size:2rem;color:var(--charcoal);">ACCESS</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;" class="reveal">
+
+      <!-- 千鳥橋 -->
+      <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.0!2d135.4700!3d34.6850!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e8c0b0000001%3A0x1!2z5Y+X6bq75qGD!5e0!3m2!1sja!2sjp!4v1"
+          width="100%" height="220" style="border:0;display:block;" allowfullscreen="" loading="lazy">
+        </iframe>
+        <div style="padding:1.2rem 1.5rem;">
+          <h3 style="font-family:'Shippori Mincho',serif;font-size:1.1rem;color:var(--teal);margin-bottom:.5rem;">E-NA（千鳥橋駅）</h3>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-size:.82rem;color:var(--charcoal);line-height:1.8;">
+            〒554-0014<br>大阪府大阪市此花区四貫島１丁目４−27<br>&emsp;プティ四貫島 105号室<br>
+            <span style="color:var(--teal);font-weight:500;">・阪神なんば線「千鳥橋駅」徒歩約3分<br>・JR 西九条駅（環状線・ゆめ咲線）徒歩約14〜20分</span>
+          </p>
+          <a href="https://maps.app.goo.gl/Vt9aM671k2EH87Rd6" target="_blank"
+            style="display:inline-flex;align-items:center;gap:.5rem;margin-top:.8rem;font-family:'Noto Sans JP',sans-serif;font-size:.78rem;color:#fff;text-decoration:none;background:#7a9e7e;padding:.5rem 1.2rem;border-radius:6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Googleマップで開く
+          </a>
+        </div>
+      </div>
+
+      <!-- 大福 -->
+      <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.0!2d135.4900!3d34.6500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e8c0b0000002%3A0x2!2z5bKp6YeO!5e0!3m2!1sja!2sjp!4v1"
+          width="100%" height="220" style="border:0;display:block;" allowfullscreen="" loading="lazy">
+        </iframe>
+        <div style="padding:1.2rem 1.5rem;">
+          <h3 style="font-family:'Shippori Mincho',serif;font-size:1.1rem;color:var(--teal);margin-bottom:.5rem;">E-NA 大福（岸里駅）</h3>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-size:.82rem;color:var(--charcoal);line-height:1.8;">
+            〒557-0035<br>大阪府大阪市西成区千本北１丁目２０−１６<br>&emsp;COURTandROJI福1 101号<br>
+            <span style="color:var(--teal);font-weight:500;">・岸里駅（Osaka Metro 四つ橋線）徒歩約3分<br>
+            ・天下茶屋駅（Osaka Metro／南海線）徒歩約8〜10分</span>
+          </p>
+          <a href="https://maps.app.goo.gl/BZ3ELjqbUQVNwkmd6" target="_blank"
+            style="display:inline-flex;align-items:center;gap:.5rem;margin-top:.8rem;font-family:'Noto Sans JP',sans-serif;font-size:.78rem;color:#fff;text-decoration:none;background:#7a9e7e;padding:.5rem 1.2rem;border-radius:6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Googleマップで開く
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="padding:4rem 0;background:var(--cream);background-image:url('images/reserve_bg.jpg');background-size:cover;background-position:center;background-blend-mode:overlay;position:relative;" id="reserve">
+  <div style="max-width:1000px;margin:0 auto;padding:0 5rem;">
+    <div style="text-align:center;margin-bottom:3rem;" class="reveal">
+      <p style="font-family:'Tenor Sans',sans-serif;font-size:.63rem;letter-spacing:.4em;color:var(--sage);text-transform:uppercase;margin-bottom:.8rem;">— ご予約 —</p>
+      <h2 style="font-family:'Shippori Mincho',serif;font-size:2rem;color:var(--charcoal);">RESERVE</h2>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:.9rem;color:var(--charcoal);margin-top:1rem;">AirbnbまたはBooking.comからご予約いただけます。</p>
+    </div>
+
+    <!-- 千鳥橋 -->
+    <div style="background:#fff;border-radius:16px;padding:2rem;margin-bottom:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.06);" class="reveal">
+      <h3 style="font-family:'Shippori Mincho',serif;font-size:1.2rem;color:var(--teal);margin-bottom:1.2rem;">E-NA（千鳥橋駅）</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <a href="https://www.airbnb.jp/rooms/1422156631181809424" target="_blank"
+          style="display:flex;align-items:center;gap:.8rem;padding:1rem 1.2rem;background:#FF5A5F;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:.85rem;font-weight:600;text-decoration:none;border-radius:12px;justify-content:center;">
+          <img src="images/img_08.png" style="width:28px;height:28px;object-fit:contain;">
+          Airbnbで予約 →
+        </a>
+        <a href="https://www.booking.com/Share-XzSNQUV" target="_blank"
+          style="display:flex;align-items:center;gap:.8rem;padding:1rem 1.2rem;background:#003580;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:.85rem;font-weight:600;text-decoration:none;border-radius:12px;justify-content:center;">
+          <span style="background:#fff;color:#003580;font-weight:900;font-size:1.1rem;border-radius:6px;padding:2px 7px;">B.</span>
+          Booking.comで予約 →
+        </a>
+      </div>
+    </div>
+
+    <!-- 大福 -->
+    <div style="background:#fff;border-radius:16px;padding:2rem;box-shadow:0 2px 12px rgba(0,0,0,.06);" class="reveal d1">
+      <h3 style="font-family:'Shippori Mincho',serif;font-size:1.2rem;color:var(--teal);margin-bottom:1.2rem;">E-NA 大福（岸里駅）</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <a href="https://www.airbnb.jp/rooms/1552494957545601946" target="_blank"
+          style="display:flex;align-items:center;gap:.8rem;padding:1rem 1.2rem;background:#FF5A5F;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:.85rem;font-weight:600;text-decoration:none;border-radius:12px;justify-content:center;">
+          <img src="images/img_08.png" style="width:28px;height:28px;object-fit:contain;">
+          Airbnbで予約 →
+        </a>
+        <a href="https://www.booking.com/Share-JAPvuv" target="_blank"
+          style="display:flex;align-items:center;gap:.8rem;padding:1rem 1.2rem;background:#003580;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:.85rem;font-weight:600;text-decoration:none;border-radius:12px;justify-content:center;">
+          <span style="background:#fff;color:#003580;font-weight:900;font-size:1.1rem;border-radius:6px;padding:2px 7px;">B.</span>
+          Booking.comで予約 →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="sec-concept" id="concept">
+  <div class="concept-deco">ええな</div>
+  <div class="concept-in">
+    <div class="concept-vis reveal">
+      <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:4px;height:640px;">
+        <div style="grid-row:1/3;overflow:hidden;">
+          <img src="images/img_13.avif" style="width:100%;height:100%;object-fit:cover;" alt="E-NA 外観">
+        </div>
+        <div style="overflow:hidden;">
+          <img src="images/img_09.avif" style="width:100%;height:100%;object-fit:cover;" alt="E-NA リビング">
+        </div>
+        <div style="overflow:hidden;">
+          <img src="images/img_15.avif" style="width:100%;height:100%;object-fit:cover;" alt="E-NA ベッドルーム">
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:1.5rem;">
+        <p style="font-family:'Shippori Mincho',serif;font-size:1.8rem;color:#a8c5a0;letter-spacing:.15em;">ここ、ええな〜</p>
+        <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1.3rem;color:#ffffff;letter-spacing:.1em;margin-top:.3rem;">E-NA</p>
+      </div>
+    </div>
+    <div class="reveal d2">
+      <h2 class="concept-h2 ja">想いをこめた<br>もうひとつの我が家<br>ここ、ええな〜</h2>
+      <h2 class="concept-h2 en" style="display:none">A home away from home,<br>crafted with love.<br>Ee na~</h2>
+      <p class="concept-body ja">「E-NA」という名前には、ふたつの想いが込められています。<br>ひとつは大阪の言葉「ええな〜（素晴らしい！）」、<br>もうひとつは、大切な娘の名前「エナ」への愛。</p>
+      <p class="concept-body en" style="display:none">"E-NA" carries two meanings: the Osaka phrase "Ee na~" meaning "How wonderful!" — and my beloved daughter's name, Ena.</p>
+      <p class="concept-body ja">ホテルでは味わえない、広々としたプライベート空間。ゆったりとくつろぎ、自分らしいライフスタイルで過ごしていただける宿です。</p>
+      <p class="concept-body en" style="display:none">A spacious private retreat, unlike any hotel. Relax and live in your own style.</p>
+      <div class="host-row" style="margin-top:2rem;">
+        <div style="width:50px;height:50px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+          <img src="images/img_16.avif" style="width:100%;height:100%;object-fit:cover;" alt="Emi">
+        </div>
+        <div>
+          <div class="hn">Emi</div>
+          <div class="hr-role">Superhost</div>
+          <div style="margin-top:.6rem;display:flex;flex-wrap:wrap;gap:.5rem;">
+            <span style="font-family:'Tenor Sans',sans-serif;font-size:.6rem;letter-spacing:.12em;color:rgba(245,242,236,.4);display:flex;align-items:center;gap:.3rem;">🍜 <span class="jai">グルメ巡り</span><span class="eni">Food lover</span></span>
+            <span style="font-family:'Tenor Sans',sans-serif;font-size:.6rem;letter-spacing:.12em;color:rgba(245,242,236,.4);display:flex;align-items:center;gap:.3rem;">🌊 <span class="jai">沖縄好き</span><span class="eni">Okinawa lover</span></span>
+            <span style="font-family:'Tenor Sans',sans-serif;font-size:.6rem;letter-spacing:.12em;color:rgba(245,242,236,.4);display:flex;align-items:center;gap:.3rem;">👩‍👧‍👦 <span class="jai">2児のママ</span><span class="eni">Mom of 2</span></span>
+          </div>
+        </div>
+      </div>
+      <p class="concept-body ja" style="margin-top:1.5rem;">2人の子どもを育てながら、世界中のゲストをお迎えしています。グルメ巡りと沖縄が大好き。「笑う門には福来たる」をモットーに、お客様が友人の家に遊びに来たような、リラックスできる滞在をご提供したいと思っています。</p>
+      <p class="concept-body en" style="display:none;margin-top:1.5rem;">Hello, I'm Emi ❤️ I enjoy welcoming guests from around the world. I hope this home feels like visiting a friend's house — relax and live like a local. You are always welcome!</p>
+      <p class="concept-body-en">"A place that feels like home, wherever your journey takes you."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ CONTACT（コンパクト・最後に小さく） -->
+<section class="sec-contact" id="contact">
+  <div class="cnt-in">
+    <div class="cnt-header reveal">
+      <hr style="border:none;border-top:1px solid var(--stone);opacity:.3;margin-bottom:2.5rem;">
+      <h2 class="cnt-h2"><span class="jai">お問い合わせ</span><span class="eni">Get in Touch</span></h2>
+      <p class="cnt-sub ja">ご予約・ご滞在に関するご質問など、お気軽にお問い合わせください。<br>日本語・英語どちらも歓迎です。通常3日以内にご返信いたします。</p>
+      <p class="cnt-sub en" style="display:none">Japanese or English welcome. We reply within 3 days.</p>
+      <hr style="border:none;border-top:1px solid var(--stone);opacity:.3;margin-top:2.5rem;">
+    </div>
+    <form action="https://formspree.io/f/mwvjknwr" method="POST" class="cnt-form reveal d1" id="contact-form"><input type="hidden" name="_next" value="https://e-na7777.github.io/ena-stay/#contact">
+      <div class="fg"><label class="fl">NAME / <span class="jai">お名前</span></label><input class="fi" type="text" name="name" placeholder="Yamada Hanako"></div>
+      <div class="fg"><label class="fl">EMAIL</label><input class="fi" type="email" name="email" placeholder="email@example.com"></div>
+      <div class="fg cnt-full"><label class="fl"><span class="jai">ご希望の物件</span><span class="eni">Property</span></label>
+        <select class="fsl" name="property"><option value="">Select / 選択</option><option>E-NA</option><option>E-NA 大福</option><option>Other / その他</option></select>
+      </div>
+      <div class="fg cnt-full"><label class="fl"><span class="jai">メッセージ</span><span class="eni">Message</span></label><textarea class="fta" name="message" placeholder="ご質問・ご要望 / Feel free to ask anything"></textarea></div>
+      <div class="cnt-full"><button type="submit" class="fsub" id="fsb"><span class="jai">メールでお問い合わせ</span><span class="eni">Send Message</span></button></div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="padding:0;background:transparent;">
+  <div style="display:grid;grid-template-columns:1.5fr 2fr;">
+    <!-- 左：想いと同じ背景色 -->
+    <div style="background:var(--charcoal);padding:2.5rem 3rem 2rem;">
+      <a href="#" class="logo">E-<em style="color:#7a9e7e;">NA</em></a>
+      <p class="ftag ja">広々とした空間で、ゆったり自分らしく。<br>心を込めた貸切民泊。</p>
+      <p class="ftag en" style="display:none">Find your home in Osaka.</p>
+      <p class="ftagen">Private Stay</p>
+    </div>
+    <!-- 右：左と同じ背景色 -->
+    <div style="background:var(--charcoal);padding:2.5rem 3rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+    <div class="reveal d1">
+      <p class="ftl">Properties</p>
+      <ul class="flinks">
+        <li><a href="#props">E-NA →</a></li>
+        <li><a href="#props">E-NA 大福 →</a></li>
+      </ul>
+    </div>
+    <div class="reveal d2">
+      <p class="ftl">Follow & Contact</p>
+      <ul class="flinks">
+        <li>
+          <a href="https://www.instagram.com/ena_guesthouse2025/" target="_blank">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            @ena_guesthouse2025
+          </a>
+        </li>
+        <li><a href="#contact"><span class="jai">メールでお問い合わせ</span><span class="eni">Contact</span></a></li>
+      </ul>
+    </div>
+    </div><!-- 右ブロック終わり -->
+  </div><!-- grid終わり -->
+  <div style="background:var(--deep);" class="fb-wrap">
+  <div class="fb">
+    <span class="copy">© 2026 E-NA · Osaka Private Stay. All rights reserved.</span>
+    <span class="lic">大阪市特区民泊 認定物件</span>
+  </div>
+  </div>
+</footer>
+
+<script>
+const cr=document.getElementById('cr'),cf=document.getElementById('cf');
+let mx=0,my=0,fx=0,fy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function anim(){fx+=(mx-fx)*.12;fy+=(my-fy)*.12;cr.style.cssText=`left:${mx}px;top:${my}px`;cf.style.cssText=`left:${fx}px;top:${fy}px`;requestAnimationFrame(anim);})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cf.style.width='50px';cf.style.height='50px';cf.style.opacity='1';cf.style.borderColor='var(--teal)';});
+  el.addEventListener('mouseleave',()=>{cf.style.width='30px';cf.style.height='30px';cf.style.opacity='.55';cf.style.borderColor='var(--teal)';});
+});
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('sc',scrollY>80));
+function setL(l){
+  document.body.classList.toggle('enlang',l==='en');
+  document.querySelectorAll('.lbtn').forEach(b=>{
+    if(b.textContent==='日本語')b.classList.toggle('on',l==='ja');
+    if(b.textContent==='English')b.classList.toggle('on',l==='en');
+  });
+  document.querySelectorAll('.ja').forEach(e=>e.style.display=l==='en'?'none':'');
+  document.querySelectorAll('.en').forEach(e=>e.style.display=l==='en'?'block':'none');
+  document.querySelectorAll('.jai').forEach(e=>e.style.display=l==='en'?'none':'');
+  document.querySelectorAll('.eni').forEach(e=>e.style.display=l==='en'?'':'none');
+}
+function updateLinks(){
+  const ci=document.getElementById('d-ci').value,co=document.getElementById('d-co').value,g=document.getElementById('d-g').value;
+  if(ci&&co){
+    document.getElementById('d-airbnb').href=`https://www.airbnb.jp/rooms/1552494957545601946?check_in=${ci}&check_out=${co}&adults=${g}`;
+    document.getElementById('d-booking').href=`https://www.booking.com/Share-JAPvuv?checkin=${ci}&checkout=${co}&group_adults=${g}`;
+  }
+}
+function updateLinksC(){
+  const ci=document.getElementById('c-ci').value,co=document.getElementById('c-co').value,g=document.getElementById('c-g').value;
+  if(ci&&co){
+    document.getElementById('c-airbnb').href=`https://www.airbnb.jp/rooms/1422156631181809424?check_in=${ci}&check_out=${co}&adults=${g}`;
+    document.getElementById('c-booking').href=`https://www.booking.com/Share-XzSNQUV?checkin=${ci}&checkout=${co}&group_adults=${g}`;
+  }
+}
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function doSend(e){
+  // Formspreeが自動送信するのでポップアップだけ表示
+  setTimeout(function(){
+    const popup = document.getElementById('contact-popup');
+    if(popup){ popup.style.display='flex'; }
+  }, 1000);
+}
+  }, 500);
+}
+</script>
+
+<script>
+// 物件選択
+function selectProp(prop) {
+  const lblEna = document.getElementById('lbl-ena');
+  const lblDaifuku = document.getElementById('lbl-daifuku');
+  const radioEna = document.getElementById('radio-ena');
+  const radioDaifuku = document.getElementById('radio-daifuku');
+  const sel = document.getElementById('res-guests');
+  if (prop === 'ena') {
+    lblEna.style.borderColor = '#4a5c45';
+    lblEna.style.background = 'rgba(74,92,69,0.06)';
+    lblDaifuku.style.borderColor = '#ddd';
+    lblDaifuku.style.background = '#fafafa';
+    radioEna.style.borderColor = '#4a5c45';
+    radioEna.innerHTML = '<div style="width:10px;height:10px;background:#4a5c45;border-radius:50%;"></div>';
+    radioDaifuku.style.borderColor = '#aaa';
+    radioDaifuku.innerHTML = '';
+    document.getElementById('prop-ena').checked = true;
+    for(let i=0;i<sel.options.length;i++){
+      const v = parseInt(sel.options[i].value);
+      sel.options[i].disabled = v > 5;
+    }
+  } else {
+    lblDaifuku.style.borderColor = '#4a5c45';
+    lblDaifuku.style.background = 'rgba(74,92,69,0.06)';
+    lblEna.style.borderColor = '#ddd';
+    lblEna.style.background = '#fafafa';
+    radioDaifuku.style.borderColor = '#4a5c45';
+    radioDaifuku.innerHTML = '<div style="width:10px;height:10px;background:#4a5c45;border-radius:50%;"></div>';
+    radioEna.style.borderColor = '#aaa';
+    radioEna.innerHTML = '';
+    document.getElementById('prop-daifuku').checked = true;
+    for(let i=0;i<sel.options.length;i++){
+      sel.options[i].disabled = false;
+    }
+  }
+}
+
+// チェックイン変更時に最低2泊以上を強制
+document.addEventListener('DOMContentLoaded', function() {
+  const ciInput = document.getElementById('res-ci');
+  const coInput = document.getElementById('res-co');
+  if (ciInput && coInput) {
+    ciInput.addEventListener('change', function() {
+      if (this.value) {
+        const ci = new Date(this.value);
+        ci.setDate(ci.getDate() + 2);
+        const minCo = ci.toISOString().split('T')[0];
+        coInput.min = minCo;
+        if (!coInput.value || coInput.value < minCo) {
+          coInput.value = minCo;
+        }
+      }
+    });
+  }
+});
+
+// 予約送信
+function submitReservation(e) {
+  e.preventDefault();
+  const prop = document.querySelector('input[name="property"]:checked');
+  if (!prop) { alert('物件を選択してください'); return; }
+  const ci = document.getElementById('res-ci').value;
+  const co = document.getElementById('res-co').value;
+  const guests = document.getElementById('res-guests').value;
+  const name = document.getElementById('res-name').value;
+  const email = document.getElementById('res-email').value;
+  const msg = document.getElementById('res-msg').value;
+  if (!ci || !co) { alert('チェックイン・チェックアウト日を入力してください'); return; }
+  if (!guests) { alert('宿泊人数を選択してください'); return; }
+  if (!name) { alert('お名前をご入力ください'); return; }
+  if (!email) { alert('メールアドレスをご入力ください'); return; }
+
+  const subject = encodeURIComponent('【E-NA 予約リクエスト】' + prop.value + ' / ' + ci + ' 〜 ' + co);
+  const body = encodeURIComponent(
+    '■ 物件: ' + prop.value + '\n' +
+    '■ チェックイン: ' + ci + '\n' +
+    '■ チェックアウト: ' + co + '\n' +
+    '■ 人数: ' + guests + '名\n' +
+    '■ お名前: ' + name + '\n' +
+    '■ Email: ' + email + '\n' +
+    '■ ご要望: ' + (msg || 'なし')
+  );
+
+  // メールソフトを開く（ページ遷移しない方法）
+  const a = document.createElement('a');
+  a.href = 'mailto:ena.minpaku2025@gmail.com?subject=' + subject + '&body=' + body;
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => document.body.removeChild(a), 100);
+
+  // ポップアップ表示
+  setTimeout(() => {
+    const popup = document.getElementById('res-popup');
+    if (popup) popup.style.display = 'flex';
+  }, 500);
+}
+</script>
+
+
+<!-- 送信完了ポップアップ -->
+<div id="res-popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:16px;padding:3rem 2.5rem;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.2);">
+    <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
+    <h3 style="font-family:'Shippori Mincho',serif;font-size:1.4rem;color:#2a2825;margin-bottom:.8rem;" class="ja">ご予約リクエストを<br>受け付けました</h3>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:#2a2825;margin-bottom:.8rem;display:none;" class="en">Request Received!</h3>
+    <p style="font-family:'Noto Sans JP',sans-serif;font-size:.9rem;color:#666;line-height:1.8;margin-bottom:.5rem;" class="ja">3日以内にご連絡いたします。<br>しばらくお待ちください。</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.9rem;color:#666;line-height:1.8;margin-bottom:.5rem;display:none;" class="en">We'll be in touch within 3 days.</p>
+    <p style="font-family:'Noto Sans JP',sans-serif;font-size:.78rem;color:#e53e3e;margin-bottom:2rem;" class="ja">※ メールソフトが開いた場合は「送信」を押してください</p>
+    <button onclick="document.getElementById('res-popup').style.display='none'" 
+      style="padding:.8rem 2.5rem;background:#4a5c45;color:#fff;border:none;border-radius:8px;font-family:'Noto Sans JP',sans-serif;font-size:.95rem;cursor:pointer;">
+      閉じる / Close
+    </button>
+  </div>
+</div>
+
+
+<!-- お問い合わせ完了ポップアップ -->
+<div id="contact-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:16px;padding:2.5rem 3rem;max-width:420px;width:90%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.15);">
+    <div style="font-size:2.5rem;margin-bottom:1rem;">✉️</div>
+    <h3 style="font-family:'Shippori Mincho',serif;font-size:1.3rem;color:#3a3a3a;margin-bottom:.8rem;">メールを受け付けました</h3>
+    <p style="font-family:'Noto Sans JP',sans-serif;font-size:.85rem;color:#888;line-height:1.8;margin-bottom:1.5rem;">お問い合わせありがとうございます。<br>折り返しご連絡いたします。</p>
+    <button onclick="document.getElementById('contact-popup').style.display='none'" style="background:#5c7060;color:#fff;border:none;border-radius:8px;padding:.8rem 2rem;font-family:'Noto Sans JP',sans-serif;font-size:.85rem;cursor:pointer;">閉じる</button>
+  </div>
+</div>
+
+<script>
+// フォーム送信後リセット
+(function(){
+  var form = document.getElementById('contact-form');
+  if(!form) return;
+  form.addEventListener('submit', function(){
+    setTimeout(function(){
+      if(form) form.reset();
+    }, 500);
+  });
+})();
+</script>
+</body>
+</html>
