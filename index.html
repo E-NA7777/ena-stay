@@ -105,7 +105,7 @@ nav.sc{background:rgba(248,245,240,.98);}
 /* SECTION COMMON */
 .eyebrow{font-family:'Cormorant Garamond',serif;font-size:.85rem;letter-spacing:.35em;color:var(--sage);text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;font-weight:500;}
 .eyebrow::before{content:'';width:24px;height:1px;background:var(--sage);flex-shrink:0;}
-.sec-h2{font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,4.5vw,4.5rem);line-height:1.05;color:var(--charcoal);}
+.sec-h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,3.5vw,3.2rem);line-height:1.05;color:var(--charcoal);}
 .sec-h2 em{color:var(--teal);font-style:italic;}
 
 /* CONCEPT SECTION */
@@ -250,7 +250,7 @@ nav.sc{background:rgba(248,245,240,.98);}
 /* FOOTER */
 footer{background:var(--deep);padding:2rem 0 1.5rem;}
 .ft{max-width:1200px;margin:0 auto;padding:0 5rem;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:6rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:1.2rem;}
-.ftl{font-family:'Tenor Sans',sans-serif;font-size:.72rem;letter-spacing:.42em;color:#fff;text-transform:uppercase;margin-bottom:1.8rem;}
+.ftl{font-family:'Noto Sans JP',sans-serif;font-size:.95rem;letter-spacing:.1em;color:#fff;font-weight:700;text-transform:uppercase;margin-bottom:1.8rem;}
 .flinks{list-style:none;}
 .flinks li{margin-bottom:.9rem;}
 .flinks a{text-decoration:none;color:#ffffff;font-size:.95rem;color:#ffffff;transition:color .3s;cursor:pointer;font-family:'Noto Sans JP',sans-serif;font-weight:200;display:flex;align-items:center;gap:.5rem;}
@@ -348,7 +348,7 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
     <div class="hl-photo" style="background-image:url('images/img_01.jpg');"></div>
     <div class="hl-overlay"></div>
     <div class="hkbg">和</div>
-    <p class="htag">Osaka Private Stay · 大阪 貸切民泊</p>
+    <p class="htag">Private Stay · 貸切民泊</p>
     <h1 class="hh1">E-<em>NA</em></h1>
     <div class="hrule"></div>
     <div class="hdesc">
@@ -357,7 +357,7 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
       <small class="eni">Spacious, private &amp; entirely yours.</small>
     </div>
     <div class="hcta">
-      <a href="#props" class="bg"><span><span class="jai">物件を見る</span><span class="eni">View Properties</span></span><span class="arr">→</span></a>
+      <a href="#props" class="bg"><span><span class="jai">ゲストハウスへ</span><span class="eni">View Guesthouses</span></span><span class="arr">→</span></a>
       <a href="#reserve" class="bf"><span class="jai">ご予約</span><span class="eni">Book Now</span></a>
     </div>
   </div>
@@ -814,14 +814,17 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="ft">
-    <div class="reveal">
+<footer style="padding:0;background:transparent;">
+  <div style="display:grid;grid-template-columns:1.5fr 2fr;">
+    <!-- 左：想いと同じ背景色 -->
+    <div style="background:var(--charcoal);padding:2.5rem 3rem 2rem;">
       <a href="#" class="logo">E-<em style="color:#7a9e7e;">NA</em></a>
       <p class="ftag ja">広々とした空間で、ゆったり自分らしく。<br>心を込めた貸切民泊。</p>
       <p class="ftag en" style="display:none">Find your home in Osaka.</p>
       <p class="ftagen">Private Stay</p>
     </div>
+    <!-- 右：通常の背景 -->
+    <div style="background:var(--deep);padding:2.5rem 3rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
     <div class="reveal d1">
       <p class="ftl">Properties</p>
       <ul class="flinks">
@@ -841,10 +844,13 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
         <li><a href="#contact"><span class="jai">メールでお問い合わせ</span><span class="eni">Contact</span></a></li>
       </ul>
     </div>
-  </div>
+    </div><!-- 右ブロック終わり -->
+  </div><!-- grid終わり -->
+  <div style="background:var(--deep);" class="fb-wrap">
   <div class="fb">
     <span class="copy">© 2026 E-NA · Osaka Private Stay. All rights reserved.</span>
     <span class="lic">大阪市特区民泊 認定物件</span>
+  </div>
   </div>
 </footer>
 
