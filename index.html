@@ -49,7 +49,7 @@ nav.sc{background:rgba(248,245,240,.98);}
 .logo em{color:var(--teal);font-style:italic;}
 .logo sub{font-family:'Tenor Sans',sans-serif;font-size:.42rem;letter-spacing:.35em;color:var(--stone);vertical-align:middle;margin-left:.6rem;text-transform:uppercase;}
 .nmenu{display:flex;gap:1.5rem;list-style:none;}
-.nmenu a{display:flex;flex-direction:column;align-items:center;gap:.2rem;font-family:'Noto Sans JP',sans-serif;font-size:.55rem;letter-spacing:.03em;color:var(--charcoal);text-decoration:none;transition:color .3s;cursor:pointer;font-weight:400;min-width:52px;}
+.nmenu a{display:flex;flex-direction:column;align-items:center;gap:.2rem;font-family:'Noto Sans JP',sans-serif;font-size:.75rem;letter-spacing:.03em;color:var(--deep);text-decoration:none;transition:color .3s;cursor:pointer;font-weight:600;min-width:52px;}
 .nmenu a:hover{color:var(--sage);}
 .nav-icon{display:flex;align-items:center;justify-content:center;color:var(--charcoal);transition:color .3s;}
 .nmenu a:hover .nav-icon{color:var(--sage);}
@@ -240,9 +240,10 @@ nav.sc{background:rgba(248,245,240,.98);}
 .cnt-form{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
 .fg{margin-bottom:0;}
 .fl{display:block;font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--stone);margin-bottom:.5rem;}
-.fi,.fsl,.fta{width:100%;padding:.8rem 0;background:transparent;border:none;border-bottom:1px solid var(--sand);color:var(--charcoal);font-family:'Noto Sans JP',sans-serif;font-size:.86rem;font-weight:300;outline:none;transition:border-color .3s;appearance:none;}
+.fi,.fsl,.fta{width:100%;padding:.8rem 0;background:transparent;border:none;border-bottom:1px solid var(--sand);color:var(--deep);font-family:'Noto Sans JP',sans-serif;font-size:1rem;font-weight:400;outline:none;transition:border-color .3s;appearance:none;}
 .fi:focus,.fsl:focus,.fta:focus{border-bottom-color:var(--sage);}
 .fta{height:80px;resize:none;}
+.fl{font-size:.95rem;font-weight:600;color:var(--deep);letter-spacing:.02em;}
 .cnt-full{grid-column:1/-1;}
 .fsub{width:100%;padding:1rem;background:var(--charcoal);color:var(--linen);border:none;font-family:'Tenor Sans',sans-serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;cursor:pointer;transition:background .3s;margin-top:.5rem;}
 .fsub:hover{background:var(--teal);}
@@ -315,8 +316,8 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
     <ul class="nmenu">
       <li><a href="#" class="jai">TOP</a></li>
       <li><a href="#props" class="jai">ゲストハウス</a></li>
-      <li><a href="#reserve" class="jai">宿泊予約</a></li>
       <li><a href="#access" class="jai">アクセス</a></li>
+      <li><a href="#reserve" class="jai">ご予約</a></li>
       <li><a href="#concept" class="jai">想い</a></li>
       <li><a href="#contact" class="jai">お問合せ</a></li>
     </ul>
@@ -361,7 +362,7 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
         <div class="ithumb"><img src="images/hero_thumb_1.jpg" style="width:100%;height:100%;object-fit:cover;" alt="寝室"></div>
         <div class="ithumb"><img src="images/hero_thumb_2.jpg" style="width:100%;height:100%;object-fit:cover;" alt="ベッドルーム"></div>
         <div class="ithumb"><img src="images/thumb_new1.jpg" style="width:100%;height:100%;object-fit:cover;" alt="千鳥橋リビング"></div>
-        <div class="ithumb"><img src="images/thumb_new2.avif" style="width:100%;height:100%;object-fit:cover;" alt="大福部屋"></div>
+        <div class="ithumb"><img src="images/img_15.avif" style="width:100%;height:100%;object-fit:cover;" alt="大福部屋"></div>
       </div>
     </div>
     <div class="vtext">Osaka · Japan</div>
@@ -799,7 +800,7 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
         <select class="fsl" name="property"><option value="">Select / 選択</option><option>E-NA</option><option>E-NA 大福</option><option>Other / その他</option></select>
       </div>
       <div class="fg cnt-full"><label class="fl"><span class="jai">メッセージ</span><span class="eni">Message</span></label><textarea class="fta" name="message" placeholder="ご質問・ご要望 / Feel free to ask anything"></textarea></div>
-      <div class="cnt-full"><button type="submit" class="fsub" id="fsb"><span class="jai">メールでお問い合わせ</span><span class="eni">Send Message</span></button></div>
+      <div class="cnt-full"><button type="submit" class="fsub" id="fsb" style="width:100%;padding:1.1rem;font-size:.85rem;letter-spacing:.15em;display:flex;align-items:center;justify-content:center;gap:.6rem;"><span style="font-size:1.1rem;">✉</span><span class="jai">メールでお問い合わせ</span><span class="eni">Send Message</span></button></div>
     </form>
   </div>
 </section>
@@ -832,7 +833,7 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
             @ena_guesthouse2025
           </a>
         </li>
-        <li><a href="#contact"><span class="jai">メールでお問い合わせ</span><span class="eni">Contact</span></a></li>
+        <li><a href="#contact" style="font-weight:600;"><span style="font-size:1.2rem;">✉</span><span class="jai">メールでお問合せ</span><span class="eni">Contact</span></a></li>
       </ul>
     </div>
     </div><!-- 右ブロック終わり -->
