@@ -287,6 +287,75 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
   .chidori-cell:first-child{grid-column:auto;}
   .chidori-amenity-grid{grid-template-columns:1fr 1fr;}
 }
+
+@media(max-width:768px){
+  /* ナビ */
+  nav{padding:1rem 1.2rem;}
+  .logo-text{font-size:1.2rem;}
+  .lang-btns{gap:.2rem;}
+  .lbtn{font-size:.62rem;padding:.25rem .5rem;}
+
+  /* ヒーロー */
+  .hero{grid-template-columns:1fr;min-height:100svh;}
+  .hl{padding:2rem 1.5rem 4rem;}
+  .hh1{font-size:clamp(2.8rem,10vw,4rem);}
+  .hdesc p{font-size:.82rem;}
+  .hcta{flex-direction:column;gap:.8rem;}
+  .hcta a{width:100%;text-align:center;justify-content:center;}
+  .hr2{height:45vw;min-height:200px;}
+  .img-top{height:100%;}
+  .img-bot{grid-template-columns:1fr 1fr;}
+
+  /* ゲストハウスカード */
+  .cards-wrap{padding:0 1.2rem;grid-template-columns:1fr;gap:1.5rem;}
+  .card{margin-bottom:0;}
+  .cbody>div[style*="grid-template-columns:1fr auto"]{grid-template-columns:1fr!important;}
+  .cbody>div[style*="grid-template-columns:1fr auto"]>div[style*="width:180px"]{width:100%!important;height:160px!important;margin-top:1rem;}
+  .cmeta{gap:1rem;flex-wrap:wrap;}
+  .cmeta>div{min-width:60px;}
+
+  /* 4つボタン */
+  div[style*="grid-template-columns:1fr 1fr 1fr 1fr"]{grid-template-columns:1fr 1fr!important;}
+
+  /* Welcome to E-NA */
+  .sec-intro{padding:0 1.2rem;grid-template-columns:1fr!important;gap:1rem;}
+  .sec-h2{font-size:clamp(1.6rem,7vw,2.5rem);}
+
+  /* アクセス */
+  #access .reveal>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  #access{padding:1.5rem 0;}
+  #access>div{padding:0 1.2rem!important;}
+
+  /* 予約 */
+  #reserve>div{padding:0 1.2rem!important;}
+  #reserve div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+
+  /* 想い */
+  .concept-in{padding:0 1.2rem;grid-template-columns:1fr!important;}
+  div[style*="height:660px"]{height:260px!important;}
+  .concept-h2{font-size:clamp(1.1rem,5vw,1.5rem);}
+  .concept-body{font-size:.9rem;}
+
+  /* お問い合わせ */
+  .cnt-in{padding:0 1.2rem!important;}
+  .cnt-form{grid-template-columns:1fr!important;}
+  .cnt-full{grid-column:1!important;}
+  .fi,.fsl,.fta{font-size:.85rem;}
+
+  /* フッター */
+  footer>div[style*="grid-template-columns"]{grid-template-columns:1fr!important;}
+  .ft{padding:0 1.2rem 1.5rem!important;grid-template-columns:1fr!important;gap:1.5rem!important;}
+  footer>div>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  .fb{padding:0 1.2rem!important;flex-direction:column;gap:.5rem;text-align:center;}
+}
+
+@media(max-width:480px){
+  .hh1{font-size:clamp(2.2rem,11vw,3rem);}
+  .hr2{height:40vw;}
+  div[style*="grid-template-columns:1fr 1fr 1fr 1fr"]{grid-template-columns:1fr 1fr!important;gap:.4rem!important;}
+  div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  #reserve div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+}
 </style>
 </head>
 <body>
