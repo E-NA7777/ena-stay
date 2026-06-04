@@ -367,8 +367,8 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
       <div class="img-bot">
         <div class="ithumb"><img src="images/hero_thumb_1.jpg" style="width:100%;height:100%;object-fit:cover;" alt="寝室"></div>
         <div class="ithumb"><img src="images/hero_thumb_2.jpg" style="width:100%;height:100%;object-fit:cover;" alt="ベッドルーム"></div>
-        <div class="ithumb"><img src="images/hero_thumb_3.jpg" style="width:100%;height:100%;object-fit:cover;" alt="青い部屋"></div>
-        <div class="ithumb"><img src="images/hero_thumb_4.jpg" style="width:100%;height:100%;object-fit:cover;" alt="食事シーン"></div>
+        <div class="ithumb"><img src="images/thumb_new1.jpg" style="width:100%;height:100%;object-fit:cover;" alt="千鳥橋リビング"></div>
+        <div class="ithumb"><img src="images/thumb_new2.avif" style="width:100%;height:100%;object-fit:cover;" alt="大福部屋"></div>
       </div>
     </div>
     <div class="vtext">Osaka · Japan</div>
@@ -800,13 +800,13 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
       <p class="cnt-sub en" style="display:none">Japanese or English welcome. We reply within 3 days.</p>
       <hr style="border:none;border-top:1px solid var(--stone);opacity:.3;margin-top:2.5rem;">
     </div>
-    <form onsubmit="doSend(event)" class="cnt-form reveal d1">
-      <div class="fg"><label class="fl">NAME / <span class="jai">お名前</span></label><input class="fi" type="text" placeholder="Yamada Hanako"></div>
-      <div class="fg"><label class="fl">EMAIL</label><input class="fi" type="email" placeholder="email@example.com"></div>
+    <form action="https://formspree.io/f/mwvjknwr" method="POST" class="cnt-form reveal d1">
+      <div class="fg"><label class="fl">NAME / <span class="jai">お名前</span></label><input class="fi" type="text" name="name" placeholder="Yamada Hanako"></div>
+      <div class="fg"><label class="fl">EMAIL</label><input class="fi" type="email" name="email" placeholder="email@example.com"></div>
       <div class="fg cnt-full"><label class="fl"><span class="jai">ご希望の物件</span><span class="eni">Property</span></label>
-        <select class="fsl"><option value="">Select / 選択</option><option>E-NA 大福</option><option>E-NA</option><option>Other / その他</option></select>
+        <select class="fsl" name="property"><option value="">Select / 選択</option><option>E-NA</option><option>E-NA 大福</option><option>Other / その他</option></select>
       </div>
-      <div class="fg cnt-full"><label class="fl"><span class="jai">メッセージ</span><span class="eni">Message</span></label><textarea class="fta" placeholder="ご質問・ご要望 / Feel free to ask anything"></textarea></div>
+      <div class="fg cnt-full"><label class="fl"><span class="jai">メッセージ</span><span class="eni">Message</span></label><textarea class="fta" name="message" placeholder="ご質問・ご要望 / Feel free to ask anything"></textarea></div>
       <div class="cnt-full"><button type="submit" class="fsub" id="fsb"><span class="jai">メールでお問い合わせ</span><span class="eni">Send Message</span></button></div>
     </form>
   </div>
@@ -880,15 +880,13 @@ function updateLinksC(){
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 function doSend(e){
-  e.preventDefault();
-  const f=e.target;
-  const name=f.querySelector('input[type=text]').value||'';
-  const prop=f.querySelector('select').value||'';
-  const msg=f.querySelector('textarea').value||'';
-  const sub=encodeURIComponent('【E-NA お問い合わせ】' + (prop?prop:''));
-  const body=encodeURIComponent('お名前: '+name+'\n物件: '+prop+'\n\nメッセージ:\n'+msg);
-  window.location.href='mailto:ena.minpaku2025@gmail.com?subject='+sub+'&body='+body;
-},3000);
+  // Formspreeが自動送信するのでポップアップだけ表示
+  setTimeout(function(){
+    const popup = document.getElementById('contact-popup');
+    if(popup){ popup.style.display='flex'; }
+  }, 1000);
+}
+  }, 500);
 }
 </script>
 
@@ -1009,5 +1007,15 @@ function submitReservation(e) {
   </div>
 </div>
 
+
+<!-- お問い合わせ完了ポップアップ -->
+<div id="contact-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:16px;padding:2.5rem 3rem;max-width:420px;width:90%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.15);">
+    <div style="font-size:2.5rem;margin-bottom:1rem;">✉️</div>
+    <h3 style="font-family:'Shippori Mincho',serif;font-size:1.3rem;color:#3a3a3a;margin-bottom:.8rem;">メールを受け付けました</h3>
+    <p style="font-family:'Noto Sans JP',sans-serif;font-size:.85rem;color:#888;line-height:1.8;margin-bottom:1.5rem;">お問い合わせありがとうございます。<br>折り返しご連絡いたします。</p>
+    <button onclick="document.getElementById('contact-popup').style.display='none'" style="background:#5c7060;color:#fff;border:none;border-radius:8px;padding:.8rem 2rem;font-family:'Noto Sans JP',sans-serif;font-size:.85rem;cursor:pointer;">閉じる</button>
+  </div>
+</div>
 </body>
 </html>
