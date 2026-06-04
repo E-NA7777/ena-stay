@@ -384,19 +384,12 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
     <ul class="nmenu">
       <li><a href="#" class="jai">TOP</a></li>
       <li><a href="#props" class="jai">ゲストハウス</a></li>
-      <li><a href="#reserve" class="jai">宿泊予約</a></li>
       <li><a href="#access" class="jai">アクセス</a></li>
+      <li><a href="#reserve" class="jai">宿泊予約</a></li>
       <li><a href="#concept" class="jai">想い</a></li>
       <li><a href="#contact" class="jai">お問合せ</a></li>
     </ul>
-    <ul class="nmenu">
-      <li><a href="#" class="eni">TOP</a></li>
-      <li><a href="#props" class="eni">STAY</a></li>
-      <li><a href="#reserve" class="eni">RESERVE</a></li>
-      <li><a href="#access" class="eni">ACCESS</a></li>
-      <li><a href="#concept" class="eni">STORY</a></li>
-      <li><a href="#contact" class="eni">CONTACT</a></li>
-    </ul>
+    
   </div>
   <div class="lang-btns" style="display:flex;align-items:center;gap:.3rem;">
     <button class="lbtn on" onclick="setL('ja')">日本語</button>
@@ -934,8 +927,17 @@ window.addEventListener('scroll',()=>document.getElementById('nav').classList.to
 function setL(l){
   document.body.classList.toggle('enlang',l==='en');
   document.querySelectorAll('.lbtn').forEach((b,i)=>b.classList.toggle('on',(i===0&&l==='ja')||(i===1&&l==='en')));
-  document.querySelectorAll('.ja').forEach(e=>e.style.display=l==='en'?'none':'');
-  document.querySelectorAll('.en').forEach(e=>e.style.display=l==='en'?'block':'none');
+  // ja/eniクラスの切り替え
+  document.querySelectorAll('.ja,.jai').forEach(e=>{
+    e.style.display=l==='en'?'none':'';
+  });
+  document.querySelectorAll('.en,.eni').forEach(e=>{
+    e.style.display=l==='en'?'inline':'none';
+  });
+  // ブロック要素は別途
+  document.querySelectorAll('p.en,h2.en,div.en,section.en').forEach(e=>{
+    e.style.display=l==='en'?'block':'none';
+  });
 }
 function updateLinks(){
   const ci=document.getElementById('d-ci').value,co=document.getElementById('d-co').value,g=document.getElementById('d-g').value;
