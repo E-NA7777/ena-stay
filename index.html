@@ -43,7 +43,7 @@ body{background:#f8f5f0;color:var(--charcoal);font-family:'Noto Sans JP',sans-se
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:400;display:flex;justify-content:space-between;align-items:center;padding:0 3rem;height:64px;background:rgba(248,245,240,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--sand);transition:background .3s;}
 nav.sc{background:rgba(248,245,240,.98);}
-.logo{font-family:'DM Serif Display',serif;font-size:1.6rem;letter-spacing:.06em;color:#ffffff;text-decoration:none;display:flex;align-items:center;gap:.5rem;white-space:nowrap;}
+.logo{font-family:'DM Serif Display',serif;font-size:1.6rem;letter-spacing:.06em;color:#1a1a1a;text-decoration:none;display:flex;align-items:center;gap:.5rem;white-space:nowrap;}
 .logo-text{display:inline;}
 .logo-sub{font-family:'Tenor Sans',sans-serif;font-size:.38rem;letter-spacing:.3em;color:var(--stone);vertical-align:middle;display:inline;}
 .logo em{color:var(--teal);font-style:italic;}
@@ -289,6 +289,9 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
 }
 
 @media(max-width:768px){
+  /* RESERVEボタンを縦並びに */
+  #reserve div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  #reserve a[style*="border-radius:12px"]{font-size:.9rem!important;padding:.9rem!important;}
   /* ナビ */
   nav{padding:1rem 1.2rem;}
   .logo-text{font-size:1.2rem;}
@@ -350,12 +353,39 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
 }
 
 @media(max-width:480px){
+  .cmeta{gap:.8rem;}
+  .cmeta>div{display:flex;flex-direction:column;align-items:flex-start;}
   .hh1{font-size:clamp(2.2rem,11vw,3rem);}
   .hr2{height:40vw;}
   div[style*="grid-template-columns:1fr 1fr 1fr 1fr"]{grid-template-columns:1fr 1fr!important;gap:.4rem!important;}
   div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
   #reserve div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
 }
+</style>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ja',
+    includedLanguages: 'ja,en,zh-CN,zh-TW,ko',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<style>
+/* Google翻訳バナーを非表示 */
+.goog-te-banner-frame{display:none!important;}
+body{top:0!important;}
+.goog-te-gadget{font-size:0!important;}
+.goog-te-gadget .goog-te-combo{display:none!important;}
+/* カスタム言語ボタン */
+.lang-switcher{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:3px;overflow:hidden;}
+.lang-btn{padding:4px 10px;font-family:'Noto Sans JP',sans-serif;font-size:.65rem;font-weight:500;color:var(--charcoal);background:transparent;border:none;border-radius:16px;cursor:pointer;transition:all .2s;white-space:nowrap;letter-spacing:.03em;}
+.lang-btn.active{background:#5c7060;color:#fff;}
+.lang-btn:hover:not(.active){background:rgba(92,112,96,.15);}
+#google_translate_element{display:none;}
 </style>
 </head>
 <body>
@@ -379,7 +409,7 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
 
 <!-- Nav -->
 <nav id="nav">
-  <a href="#" class="logo"><span class="logo-text"><span style="color:#1a1a1a;">E</span>-<em>NA</em></span></a>
+  <a href="#" class="logo"><span class="logo-text" style="color:#1a1a1a;">E-<em>NA</em></span></a>
   <div class="nav-center">
     <ul class="nmenu">
       <li><a href="#" class="jai">TOP</a></li>
@@ -391,11 +421,17 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
     </ul>
     
   </div>
-  <div class="lang-btns" style="display:flex;align-items:center;gap:.3rem;">
-    <button class="lbtn on" onclick="setL('ja')">日本語</button>
-    <button class="lbtn" onclick="setL('en')">English</button>
-    <a href="https://www.instagram.com/ena_guesthouse2025/?hl=ja" target="_blank" rel="noopener" style="display:flex;align-items:center;margin-left:.4rem;color:#E1306C;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <div class="lang-btns" style="display:flex;align-items:center;gap:8px;">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="switchLang('ja', this)">日本語</button>
+      <button class="lang-btn" onclick="switchLang('en', this)">EN</button>
+      <button class="lang-btn" onclick="switchLang('zh-CN', this)">简体</button>
+      <button class="lang-btn" onclick="switchLang('zh-TW', this)">繁體</button>
+      <button class="lang-btn" onclick="switchLang('ko', this)">한국어</button>
+    </div>
+    <div id="google_translate_element"></div>
+    <a href="https://www.instagram.com/ena_guesthouse2025/?hl=ja" target="_blank" rel="noopener" style="display:flex;align-items:center;color:#E1306C;margin-left:4px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
         <circle cx="12" cy="12" r="4"></circle>
         <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle>
@@ -1106,5 +1142,42 @@ function submitReservation(e) {
   });
 })();
 </script>
+
+<script>
+function switchLang(lang, btn) {
+  // ボタンのアクティブ状態を更新
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  
+  if(lang === 'ja') {
+    // 日本語に戻す
+    var iframe = document.querySelector('.goog-te-banner-frame');
+    if(iframe) iframe.style.display='none';
+    // Google翻訳のcookieをリセット
+    var gtCombo = document.querySelector('.goog-te-combo');
+    if(gtCombo) {
+      gtCombo.value = '';
+      gtCombo.dispatchEvent(new Event('change'));
+    }
+    // cookieで日本語に戻す
+    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + location.hostname;
+    location.reload();
+  } else {
+    // Google翻訳のコンボボックスを操作
+    var tryTranslate = function(attempts) {
+      var gtCombo = document.querySelector('.goog-te-combo');
+      if(gtCombo) {
+        gtCombo.value = lang;
+        gtCombo.dispatchEvent(new Event('change'));
+      } else if(attempts > 0) {
+        setTimeout(function(){ tryTranslate(attempts-1); }, 300);
+      }
+    };
+    tryTranslate(10);
+  }
+}
+</script>
+
 </body>
 </html>
