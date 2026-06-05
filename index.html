@@ -49,7 +49,7 @@ nav.sc{background:rgba(248,245,240,.98);}
 .logo em{color:var(--teal);font-style:italic;}
 .logo sub{font-family:'Tenor Sans',sans-serif;font-size:.42rem;letter-spacing:.35em;color:var(--stone);vertical-align:middle;margin-left:.6rem;text-transform:uppercase;}
 .nmenu{display:flex;gap:1.5rem;list-style:none;}
-.nmenu a{display:flex;flex-direction:column;align-items:center;gap:.2rem;font-family:'Noto Sans JP',sans-serif;font-size:.55rem;letter-spacing:.03em;color:var(--charcoal);text-decoration:none;transition:color .3s;cursor:pointer;font-weight:400;min-width:52px;}
+.nmenu a{display:flex;flex-direction:column;align-items:center;gap:.2rem;font-family:'Noto Sans JP',sans-serif;font-size:.82rem;letter-spacing:.03em;color:#1a1a1a;font-weight:600;text-decoration:none;transition:color .3s;cursor:pointer;font-weight:400;min-width:52px;}
 .nmenu a:hover{color:var(--sage);}
 .nav-icon{display:flex;align-items:center;justify-content:center;color:var(--charcoal);transition:color .3s;}
 .nmenu a:hover .nav-icon{color:var(--sage);}
@@ -363,29 +363,30 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
 }
 </style>
 
-<script type="text/javascript">
-function googleTranslateElementInit() {
+
+<style>
+
+</style>
+<script>
+function googleTranslateElementInit(){
   new google.translate.TranslateElement({
-    pageLanguage: 'ja',
-    includedLanguages: 'ja,en,zh-CN,zh-TW,ko',
-    autoDisplay: false,
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-  }, 'google_translate_element');
+    pageLanguage:'ja',
+    includedLanguages:'ja,en,zh-CN,zh-TW,ko',
+    autoDisplay:false
+  },'google_translate_element');
 }
 </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <style>
-/* Google翻訳バナーを非表示 */
-.goog-te-banner-frame{display:none!important;}
-body{top:0!important;}
-.goog-te-gadget{font-size:0!important;}
-.goog-te-gadget .goog-te-combo{display:none!important;}
-/* カスタム言語ボタン */
-.lang-switcher{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:3px;overflow:hidden;}
-.lang-btn{padding:4px 10px;font-family:'Noto Sans JP',sans-serif;font-size:.65rem;font-weight:500;color:var(--charcoal);background:transparent;border:none;border-radius:16px;cursor:pointer;transition:all .2s;white-space:nowrap;letter-spacing:.03em;}
+.goog-te-banner-frame,.goog-te-balloon-frame{display:none!important;}
+.goog-te-menu-frame{max-height:none!important;}
+body{top:0!important;position:relative!important;}
+iframe.goog-te-banner-frame{display:none!important;}
+.lang-switcher{display:flex;align-items:center;gap:2px;border:1px solid rgba(0,0,0,.15);border-radius:20px;padding:2px;background:rgba(255,255,255,.9);}
+.lang-btn{padding:4px 9px;font-family:'Noto Sans JP',sans-serif;font-size:.62rem;font-weight:600;color:#3a3a3a;background:transparent;border:none;border-radius:16px;cursor:pointer;transition:all .2s;white-space:nowrap;}
 .lang-btn.active{background:#5c7060;color:#fff;}
-.lang-btn:hover:not(.active){background:rgba(92,112,96,.15);}
-#google_translate_element{display:none;}
+.lang-btn:hover:not(.active){background:rgba(92,112,96,.12);}
+#google_translate_element{display:none!important;}
 </style>
 </head>
 <body>
@@ -1143,41 +1144,37 @@ function submitReservation(e) {
 })();
 </script>
 
+
+
 <script>
-function switchLang(lang, btn) {
-  // ボタンのアクティブ状態を更新
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+function switchLang(lang, btn){
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  
-  if(lang === 'ja') {
-    // 日本語に戻す
-    var iframe = document.querySelector('.goog-te-banner-frame');
-    if(iframe) iframe.style.display='none';
-    // Google翻訳のcookieをリセット
-    var gtCombo = document.querySelector('.goog-te-combo');
-    if(gtCombo) {
-      gtCombo.value = '';
-      gtCombo.dispatchEvent(new Event('change'));
-    }
-    // cookieで日本語に戻す
-    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + location.hostname;
+  if(lang==='ja'){
+    // cookieを削除してリロード
+    var d=location.hostname;
+    document.cookie='googtrans=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/;domain='+d;
+    document.cookie='googtrans=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/;domain=.'+d;
+    document.cookie='googtrans=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
     location.reload();
-  } else {
-    // Google翻訳のコンボボックスを操作
-    var tryTranslate = function(attempts) {
-      var gtCombo = document.querySelector('.goog-te-combo');
-      if(gtCombo) {
-        gtCombo.value = lang;
-        gtCombo.dispatchEvent(new Event('change'));
-      } else if(attempts > 0) {
-        setTimeout(function(){ tryTranslate(attempts-1); }, 300);
-      }
-    };
-    tryTranslate(10);
+    return;
   }
+  // Google翻訳のselectを探して変更
+  var attempt=0;
+  var t=setInterval(function(){
+    var sel=document.querySelector('select.goog-te-combo');
+    if(sel){
+      sel.value=lang;
+      sel.dispatchEvent(new Event('change'));
+      clearInterval(t);
+    } else if(attempt++>30){
+      clearInterval(t);
+      // フォールバック：Google翻訳URLリダイレクト
+      var url='https://translate.google.com/translate?sl=ja&tl='+lang+'&u='+encodeURIComponent(location.href);
+      window.open(url,'_blank');
+    }
+  },200);
 }
 </script>
-
 </body>
 </html>
