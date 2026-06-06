@@ -49,7 +49,7 @@ nav.sc{background:rgba(248,245,240,.98);}
 .logo em{color:var(--teal);font-style:italic;}
 .logo sub{font-family:'Tenor Sans',sans-serif;font-size:.42rem;letter-spacing:.35em;color:var(--stone);vertical-align:middle;margin-left:.6rem;text-transform:uppercase;}
 .nmenu{display:flex;gap:1.5rem;list-style:none;}
-.nmenu a{display:flex;flex-direction:column;align-items:center;gap:.2rem;font-family:'Shippori Mincho',serif;font-size:3rem;letter-spacing:.05em;color:var(--charcoal);font-weight:600;text-decoration:none;transition:color .3s;cursor:pointer;font-weight:400;min-width:52px;}
+.nmenu a{display:flex;flex-direction:column;align-items:center;gap:.2rem;font-family:'DM Serif Display',serif;font-size:1.6rem;letter-spacing:.06em;color:#4a7c59;font-weight:400;text-decoration:none;transition:color .3s;cursor:pointer;font-weight:400;min-width:52px;}
 .nmenu a:hover{color:var(--sage);}
 .nav-icon{display:flex;align-items:center;justify-content:center;color:var(--charcoal);transition:color .3s;}
 .nmenu a:hover .nav-icon{color:var(--sage);}
@@ -375,6 +375,41 @@ body.enlang .jai{display:none;}body.enlang .eni{display:inline;}
 .mobile-menu a{font-family:'Shippori Mincho',serif;font-size:1.6rem;color:var(--charcoal);text-decoration:none;letter-spacing:.1em;}
 .mobile-menu a:hover{color:var(--teal);}
 .mobile-close{position:absolute;top:1.5rem;right:1.5rem;font-size:1.5rem;cursor:pointer;background:none;border:none;color:var(--charcoal);}
+
+/* スマホ用ナビバー */
+.mobile-nav-bar{display:none;}
+@media(max-width:768px){
+  .mobile-nav-bar{
+    display:flex;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    background:rgba(248,245,240,.97);
+    border-bottom:1px solid rgba(0,0,0,.08);
+    padding:0;
+    position:sticky;
+    top:60px;
+    z-index:900;
+    gap:0;
+  }
+  .mobile-nav-bar::-webkit-scrollbar{display:none;}
+  .mobile-nav-bar a{
+    flex-shrink:0;
+    padding:.65rem 1rem;
+    font-family:'Shippori Mincho',serif;
+    font-size:.92rem;
+    font-weight:600;
+    color:#4a7c59;
+    text-decoration:none;
+    white-space:nowrap;
+    border-bottom:2px solid transparent;
+    transition:border-color .2s;
+  }
+  .mobile-nav-bar a:active{
+    border-bottom:2px solid #4a7c59;
+    background:rgba(74,124,89,.06);
+  }
+}
 </style>
 
 
@@ -457,6 +492,17 @@ iframe.goog-te-banner-frame{display:none!important;}
     </a>
   </div>
 </nav>
+
+<!-- スマホ用ナビバー -->
+<div class="mobile-nav-bar">
+  <a href="#">TOP</a>
+  <a href="#props">ゲストハウス</a>
+  <a href="#access">アクセス</a>
+  <a href="#reserve">ご予約</a>
+  <a href="#concept">想い</a>
+  <a href="#contact">お問合せ</a>
+</div>
+
 <!-- モバイルメニュー -->
 <div class="mobile-menu" id="mobile-menu">
   <button class="mobile-close" onclick="toggleMenu()">✕</button>
