@@ -35,7 +35,7 @@ body { background:var(--charcoal); color:var(--linen); font-family:'Noto Sans JP
 .gcell:hover img { transform:scale(1.04); }
 .gcell-label { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent,rgba(0,0,0,.5)); padding:.8rem 1rem .6rem; font-family:'Noto Sans JP',sans-serif; font-size:.72rem; color:rgba(255,255,255,.9); }
 .gcell.wide { grid-column:span 2; aspect-ratio:8/3; }
-@media(max-width:700px){ .gallery-grid{grid-template-columns:1fr 1fr;} .gcell.wide{grid-column:span 2;} .page-header{padding:2rem 1.5rem 1rem;} }
+@media(max-width:700px){ .gallery-grid{grid-template-columns:1fr 1fr;} .gcell{aspect-ratio:1/1;} .gcell.wide{grid-column:span 2; aspect-ratio:2/1;} .page-header{padding:2rem 1.5rem 1rem;} }
 
 .sec-chidori-gallery{ padding:0; background:var(--charcoal); }
 .chidori-gallery-header{ display:none; }
