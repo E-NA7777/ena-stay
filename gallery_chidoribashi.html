@@ -10,32 +10,14 @@
 <style>
 :root{
   --linen:   #f8f5f0;
-  --cream:   #f0ebe2;
-  --sand:    #e0d8cc;
   --stone:   #b0a898;
-  --sage:    #6b7c5e;
-  --teal:    #5c7060;
-  --taupe:   #9c8c7e;
   --charcoal:#3a3530;
-  --deep:    #2a2520;
-  --mist:    #ece8e0;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
 body { background:var(--charcoal); color:var(--linen); font-family:'Noto Sans JP',sans-serif; }
 
-.back-btn {
-  display:inline-block;
-  padding:.55rem 1.4rem;
-  border:1px solid var(--stone);
-  color:var(--stone);
-  text-decoration:none;
-  font-size:.78rem;
-  letter-spacing:.15em;
-  transition:all .3s;
-}
-.back-btn:hover { opacity:.85; }
-
+/* ── ヘッダー ── */
 .page-header {
   padding:3rem 4rem 2rem;
   max-width:1200px;
@@ -61,13 +43,24 @@ body { background:var(--charcoal); color:var(--linen); font-family:'Noto Sans JP
   text-transform:uppercase;
   margin-top:.3rem;
 }
+.back-btn {
+  display:inline-block;
+  padding:.55rem 1.4rem;
+  border:1px solid var(--stone);
+  color:var(--stone);
+  text-decoration:none;
+  font-size:.78rem;
+  letter-spacing:.15em;
+  transition:all .3s;
+}
+.back-btn:hover { opacity:.85; }
 
+/* ── ギャラリー共通 ── */
 .gallery-wrap {
   padding:0 2rem 4rem;
   max-width:1400px;
   margin:0 auto;
 }
-
 .sec-chidori-gallery { padding:0; background:var(--charcoal); }
 .chidori-gallery-header { display:none; }
 .cgallery-h2 { display:none; }
@@ -98,38 +91,38 @@ body { background:var(--charcoal); color:var(--linen); font-family:'Noto Sans JP
 }
 .cell:hover img { transform:scale(1.04); }
 
-/* ── スマホ：1列縦積み ── */
-@media(max-width:600px){
-  .page-header { padding:1.5rem 1rem 1rem; }
-
-  .row1, .row2 {
-    display:flex;
-    flex-direction:column;
-    gap:4px;
-    height:auto;
-    margin-top:0;
-  }
-  .row2 { margin-top:4px; }
-
-  .cell {
-    width:100%;
-    aspect-ratio:4/3;
-    height:auto;
-  }
-  .gallery-wrap { padding:0 .5rem 3rem; }
-}
-
-/* ── タブレット：2列 ── */
+/* ── タブレット ── */
 @media(min-width:601px) and (max-width:1024px){
   .page-header { padding:2rem 1.5rem 1rem; }
+  .row1 { grid-template-columns:1fr 1fr; height:300px; }
+  .row2 { grid-template-columns:1fr 1fr; height:300px; }
+}
 
-  .row1 {
-    grid-template-columns:1fr 1fr;
-    height:300px;
+/* ── スマホ：大福と同じ2列グリッド ── */
+@media(max-width:600px){
+  .page-header {
+    padding:1.5rem 1rem 1rem;
+    flex-direction:column;
+    align-items:flex-start;
   }
-  .row2 {
+  .gallery-wrap { padding:0 .5rem 3rem; }
+
+  /* PC用のrow1/row2を無効化して2列グリッドに統一 */
+  .row1, .row2 {
+    display:contents;
+  }
+  .sec-chidori-gallery {
+    display:grid;
     grid-template-columns:1fr 1fr;
-    height:300px;
+    gap:4px;
+  }
+  /* headerブロックはグリッドから除外 */
+  .chidori-gallery-header {
+    display:none;
+  }
+  .cell {
+    aspect-ratio:1/1;
+    height:auto;
   }
 }
 </style>
@@ -146,7 +139,7 @@ body { background:var(--charcoal); color:var(--linen); font-family:'Noto Sans JP
 
 <div class="gallery-wrap">
 <section class="sec-chidori-gallery">
-  <div class="chidori-gallery-header reveal">
+  <div class="chidori-gallery-header">
     <p class="eyebrow"><span class="jai">フォトギャラリー</span><span class="eni">Gallery</span></p>
     <h2 class="cgallery-h2"><span class="jai">E-NA フォトギャラリー</span><span class="eni">E-NA — Photo Gallery</span></h2>
   </div>
